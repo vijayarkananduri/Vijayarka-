@@ -32,7 +32,8 @@ const quests=[
  {id:'paper',title:'Open the Archives',desc:'Visit the research shelf and inspect a paper.',xp:25,anchor:'#archives'},
  {id:'book',title:'Pull a Spine',desc:'Open a book or the Ancient Echoes transmission.',xp:25,anchor:'#library'}
 ];
-let state=JSON.parse(localStorage.getItem('vn-living-portfolio')||'null')||{name:'',class:'Wanderer',xp:0,visited:[],quests:[],created:false};
+const emptyState=()=>({name:'',class:'Wanderer',xp:0,visited:[],quests:[],created:false});
+let state; try{state=JSON.parse(localStorage.getItem('vn-living-portfolio')||'null')||emptyState();}catch{state=emptyState();}
 const $=s=>document.querySelector(s); const $$=s=>[...document.querySelectorAll(s)];
 function save(){localStorage.setItem('vn-living-portfolio',JSON.stringify(state));renderProfile();renderQuests();}
 function renderProjects(){ $('#projectGrid').innerHTML=projects.map((p,i)=>`<article class="project-card" data-project="${i}"><div><div class="project-num">${String(i+1).padStart(2,'0')} / ${p[2]}</div><h3>${p[0]}</h3><p>${p[1]}</p><div class="tag-row"><span class="tag">${p[2].split(' / ')[0]}</span>${p[2].includes(' / ')?`<span class="tag">${p[2].split(' / ')[1]}</span>`:''}</div></div>${p[3]?`<a class="card-link" href="${p[3]}" target="_blank" rel="noreferrer" data-track="project">Open artifact ↗</a>`:''}</article>`).join(''); }
@@ -50,6 +51,6 @@ renderProjects();renderPapers();renderBooks();renderProfile();renderQuests();
 $$('.landmark').forEach(b=>b.onclick=()=>visit(b.dataset.dest));
 $('#startBtn').onclick=()=>state.created?visit('start'):openModal();$('#enterBtn').onclick=()=>enterWorld(false);$('#skipBtn').onclick=()=>enterWorld(true);$('#surpriseBtn').onclick=()=>{const dest=['projects','archives','library','journey','connect'][Math.floor(Math.random()*5)];visit(dest);};
 $('#questBtn').onclick=()=>{$('#questDrawer').classList.add('open');$('#questDrawer').setAttribute('aria-hidden','false')};$('#questClose').onclick=()=>$('#questDrawer').classList.remove('open');$('#profileBtn').onclick=()=>{$('#profileDrawer').classList.add('open');$('#profileDrawer').setAttribute('aria-hidden','false')};$('#profileClose').onclick=()=>$('#profileDrawer').classList.remove('open');
-$('#resetBtn').onclick=()=>{if(confirm('Reset this journey?')){state={name:'',class:'Wanderer',xp:0,visited:[],quests:[],created:false};save();location.reload();}};$('#profileReset').onclick=()=>{$('#profileDrawer').classList.remove('open');openModal();};
+$('#resetBtn').onclick=()=>{if(confirm('Reset this journey?')){state=emptyState();save();location.reload();}};$('#profileReset').onclick=()=>{if(confirm('Reset your character and progress?')){state=emptyState();save();$('#profileDrawer').classList.remove('open');openModal();}};
 $$('[data-close]').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.close).hidden=true);document.addEventListener('click',e=>{const a=e.target.closest('[data-track]');if(a){completeQuest(a.dataset.track);}});
 if(!state.created)setTimeout(openModal,500);
