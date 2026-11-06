@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f3ead8" />
+  <meta name="description" content="The Living Portfolio of Vijayarka Nanduri — an interactive world of HCI research, tools, games, books and ideas." />
+  <title>The Living Portfolio · Vijayarka Nanduri</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="The Living Portfolio home"><span class="brand-mark">VN</span><span>THE LIVING<br><em>PORTFOLIO</em></span></a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#world">World</a><a href="#projects">Projects</a><a href="#archives">Archives</a><a href="#library">Library</a><a href="#journey">Journey</a><a href="#connect">Connect</a>
+    </nav>
+    <div class="top-actions"><button class="icon-btn" id="questBtn" title="Open quests">✦ <span class="quest-count">3</span></button><button class="profile-chip" id="profileBtn"><span class="mini-avatar">✶</span><span id="profileLabel">Wanderer</span></button></div>
+  </header>
+
+  <main id="top">
+    <section class="hero section-pad">
+      <div class="hero-copy"><p class="eyebrow">FORGE ONLINE // V6.0.0</p><h1>Don’t just visit.<br><span>Explore.</span></h1><p class="lede">A portfolio that behaves like a small world. Choose a class, follow a path, and discover the systems, stories and experiments of Vijayarka Nanduri.</p><div class="hero-actions"><button class="primary" id="startBtn">Enter the world <span>↗</span></button><button class="text-btn" id="surpriseBtn">Surprise me <span>✦</span></button></div><div class="signal"><span class="signal-dot"></span> World status: alive <span class="signal-sep">/</span> 10 artifacts loaded <span class="signal-sep">/</span> 3 papers archived</div></div>
+      <div class="hero-orbit" aria-hidden="true"><div class="orbit-ring ring-a"></div><div class="orbit-ring ring-b"></div><div class="orbit-card card-a">HCI<br><small>research</small></div><div class="orbit-card card-b">AI<br><small>emotion</small></div><div class="orbit-card card-c">✶</div><div class="hero-seal">VN<br><small>maker · writer<br>researcher</small></div></div>
+    </section>
+
+    <section id="world" class="world-section section-pad">
+      <div class="section-heading"><div><p class="eyebrow">01 // THE WORLD</p><h2>Choose a place to begin.</h2></div><p class="section-note">Tap a landmark. Your character will travel there, then open the archive.</p></div>
+      <div class="map-shell">
+        <div class="map-meta"><span><b class="live-dot"></b> FORGE VALLEY</span><span id="mapStatus">Select a destination</span><button class="map-help" id="resetBtn">Reset journey</button></div>
+        <div class="map" id="map">
+          <svg class="paths" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true"><path d="M145 370 C250 300 270 155 410 135 S630 180 716 116 S846 135 875 270"/><path d="M410 135 C470 220 548 290 650 355 S810 350 875 270"/><path d="M145 370 C330 400 530 420 650 355"/></svg>
+          <div class="terrain t1"></div><div class="terrain t2"></div><div class="terrain t3"></div><div class="tree tree1">♣</div><div class="tree tree2">♣</div><div class="tree tree3">♣</div><div class="tree tree4">♣</div>
+          <button class="landmark start-landmark" data-dest="start" style="left:12%;top:67%"><span class="building">⌂</span><strong>Start</strong><small>the threshold</small></button>
+          <button class="landmark archive-landmark" data-dest="archives" style="left:38%;top:20%"><span class="building">▤</span><strong>Archives</strong><small>research & ideas</small></button>
+          <button class="landmark library-landmark" data-dest="library" style="left:61%;top:68%"><span class="building">▥</span><strong>Library</strong><small>books & stories</small></button>
+          <button class="landmark arcade-landmark" data-dest="projects" style="left:84%;top:50%"><span class="building">✹</span><strong>Arcade</strong><small>tools & games</small></button>
+          <button class="landmark forge-landmark" data-dest="journey" style="left:70%;top:18%"><span class="building">⌁</span><strong>Forge</strong><small>process & recognition</small></button>
+          <button class="landmark connect-landmark" data-dest="connect" style="left:85%;top:78%"><span class="building">↗</span><strong>Signal Tower</strong><small>make contact</small></button>
+          <div class="player" id="player" aria-label="Your character"><span>✦</span></div>
+          <div class="map-caption">The world is lightweight by design: paper, paths, and enough motion to make discovery feel personal.</div>
+        </div>
+      </div>
+      <div class="accessible-destinations"><span>Text map:</span><a href="#projects">Projects</a><a href="#archives">Research</a><a href="#library">Books</a><a href="#journey">Journey</a><a href="#connect">Contact</a></div>
+    </section>
+
+    <section id="projects" class="section-pad content-section"><div class="section-heading"><div><p class="eyebrow">02 // SELECTED ARTIFACTS</p><h2>Things that became real.</h2></div><p class="section-note">Ten projects from the living archive, plus the work around them.</p></div><div class="project-grid" id="projectGrid"></div></section>
+
+    <section id="archives" class="split-section section-pad"><div class="split-intro"><p class="eyebrow">03 // THE ARCHIVES</p><h2>Ideas, made inspectable.</h2><p>Three preprints trace a line from behavioral design to explainable AI and emotion-aware tools.</p><a class="outline-btn" href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Nanduri%2C%20Vijayarka%22" target="_blank" rel="noreferrer">Open the Zenodo shelf ↗</a></div><div class="paper-list" id="paperList"></div></section>
+
+    <section id="library" class="library-section section-pad"><div class="section-heading"><div><p class="eyebrow">04 // THE LIBRARY</p><h2>Where science meets the heart.</h2></div><p class="section-note">Pull a spine. Press play. Follow the thread.</p></div><div class="book-grid" id="bookGrid"></div></section>
+
+    <section id="journey" class="journey-section section-pad"><div class="journey-copy"><p class="eyebrow">05 // JOURNEY & RECOGNITION</p><h2>The origin story is still unfolding.</h2><p>From hardware integration to HCI research, writing and interactive systems, the path keeps moving between technical thinking and human feeling.</p></div><div class="timeline"><div><b>2025 — now</b><strong>Independent HCI researcher</strong><span>Three published preprints on Zenodo; Alive UI, explainable AI and emotion-aware writing tools.</span></div><div><b>2023 — now</b><strong>Author & poet</strong><span>Newton’s Law of Love and The Chemistry of Love on Amazon Kindle.</span></div><div><b>2022 — 2023</b><strong>Hardware integration lead</strong><span>NSLV-19 balloon satellite: GPS, barometric and radiation sensor integration.</span></div><div><b>2020 — now</b><strong>Writer & creator</strong><span>Technical thinking meets narrative across YouTube, Medium, Wattpad and Instagram.</span></div></div></section>
+
+    <section id="connect" class="connect-section section-pad"><div><p class="eyebrow">06 // ESTABLISH CONNECTION</p><h2>Make something that moves.</h2><p>Open for research collaboration, architectural consultation and conversations about stories.</p></div><div class="connect-links"><a href="mailto:vijayarkananduri@gmail.com"><span>Direct line</span><b>vijayarkananduri@gmail.com ↗</b></a><a href="https://github.com/vijayarkananduri" target="_blank" rel="noreferrer"><span>Code archive</span><b>github.com/vijayarkananduri ↗</b></a><a href="https://www.linkedin.com/in/vijayarka" target="_blank" rel="noreferrer"><span>Professional signal</span><b>LinkedIn / Vijayarka ↗</b></a><a href="https://vijayarka.netlify.app/" target="_blank" rel="noreferrer"><span>Previous world</span><b>vijayarka.netlify.app ↗</b></a></div></section>
+  </main>
+
+  <footer><span>FORGE.LOG // V.N-KERNEL</span><span>© Vijayarka Nanduri · Built for exploration</span><span>STATUS: ONLINE</span></footer>
+
+  <div class="modal-backdrop" id="characterModal" hidden><div class="modal character-modal"><button class="close" data-close="characterModal">×</button><p class="eyebrow">CHARACTER CREATION</p><h2>Who enters the world?</h2><p class="modal-copy">Your class changes the tone of the journey, not what you can access.</p><label>Your name <input id="nameInput" placeholder="Wanderer" maxlength="24" /></label><div class="class-grid" id="classGrid"></div><button class="primary full" id="enterBtn">Enter as <span id="enterClass">Wanderer</span> ↗</button><button class="skip" id="skipBtn">Continue anonymously</button></div></div>
+  <aside class="drawer" id="questDrawer" aria-hidden="true"><div class="drawer-head"><div><p class="eyebrow">QUEST LOG</p><h2>Small objectives.</h2></div><button class="close" id="questClose">×</button></div><div id="questList"></div></aside>
+  <aside class="drawer profile-drawer" id="profileDrawer" aria-hidden="true"><div class="drawer-head"><div><p class="eyebrow">CHARACTER PROFILE</p><h2 id="profileTitle">Wanderer</h2></div><button class="close" id="profileClose">×</button></div><div class="profile-card"><div class="avatar-large">✶</div><p id="profileClass">Anonymous explorer</p><div class="level-row"><span>LEVEL <b id="levelNum">1</b></span><span><b id="xpNum">0</b> XP</span></div><div class="xp-bar"><i id="xpBar"></i></div></div><div class="stats" id="stats"></div><button class="outline-btn full" id="profileReset">Reset character</button></aside>
+  <script src="app.js"></script>
+</body>
+</html>
