@@ -1,23 +1,27 @@
-# Vijayarka- — The Living Portfolio
+# The Living Portfolio RPG
 
-A lightweight, static portfolio world for Vijayarka Nanduri. It uses plain HTML, CSS and JavaScript so it can run directly from GitHub Pages or Netlify without a build step.
+A playable top-down browser RPG built around Vijayarka Nanduri's portfolio. The portfolio is now the world: the Arcade, Archives, Library, Forge and Signal Tower are explorable locations with NPCs, dialogue, quests, XP, a minimap and a Codex for the deeper work.
+
+## Controls
+
+- **WASD / arrow keys:** move
+- **Space:** talk, enter locations and advance dialogue
+- **C:** open the Codex
+- **Esc:** pause or close dialogue
+- **Touch:** use the on-screen directional controls and diamond action button
 
 ## Run locally
-
-Open `index.html` in a browser, or serve the repository with any static server:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-## Publish with GitHub Pages
+Open `http://localhost:8080` in a browser. No build command or backend is required.
 
-In the repository settings, open **Pages**, choose **Deploy from a branch**, select `main` and the `/ (root)` folder, then save. The site is available at:
+## Publish
 
-`https://vijayarkananduri.github.io/Vijayarka-/`
+GitHub Pages can deploy directly from `main` and the repository root. Netlify can use the repository with an empty build command and `.` as the publish directory.
 
-## Publish with Netlify
+Live site: https://vijayarkananduri.github.io/Vijayarka-/
 
-Use **Add new site → Import an existing project**, select this repository, leave the build command empty, and set the publish directory to `.`.
-
-The site stores the visitor’s name, class, XP, quests and visited locations only in the visitor’s own browser `localStorage`. No backend or build service is required.
+Progress is saved only in the visitor's browser using `localStorage`. The game includes procedural terrain, material textures, animated water and particles, character/NPC sprites, collision-aware movement, location discovery, quest rewards, dialogue, a day-night tint, a minimap and a portfolio Codex.
