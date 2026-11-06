@@ -13,7 +13,7 @@
 </head>
 <body>
   <main class="game-shell" id="gameShell">
-    <canvas id="world" aria-label="Playable portfolio RPG world"></canvas>
+    <canvas id="world" aria-label="Playable 3D portfolio RPG world"></canvas>
     <div class="vignette"></div>
     <header class="hud-top">
       <div class="brand-lockup"><span class="crest">VN</span><div><b>THE LIVING PORTFOLIO</b><small>FORGE VALLEY · SEASON 01</small></div></div>
@@ -26,12 +26,12 @@
     <div class="dialogue" id="dialogue" hidden><div class="speaker-line"><span class="speaker-avatar" id="speakerAvatar">✦</span><div><b id="speakerName">THE WORLD</b><small id="speakerRole">FORGE SPIRIT</small></div><button id="dialogueClose">×</button></div><p id="dialogueText"></p><div class="dialogue-hint">SPACE / TAP TO CONTINUE</div></div>
     <aside class="quest-panel" id="questPanel" hidden><div class="panel-title"><div><span class="eyebrow">ACTIVE OBJECTIVES</span><h2>Quest log</h2></div><button class="panel-close" data-close="questPanel">×</button></div><div id="questList"></div></aside>
     <aside class="codex-panel" id="codexPanel" hidden><div class="panel-title"><div><span class="eyebrow">FORGE ARCHIVES</span><h2>Codex</h2></div><button class="panel-close" data-close="codexPanel">×</button></div><nav class="codex-tabs"><button class="active" data-tab="artifacts">Artifacts</button><button data-tab="archives">Archives</button><button data-tab="library">Library</button><button data-tab="journey">Journey</button></nav><div class="codex-content" id="codexContent"></div></aside>
-    <div class="mobile-controls" aria-label="Touch movement controls"><button data-move="up">▲</button><div><button data-move="left">◀</button><button data-action="interact">◆</button><button data-move="right">▶</button></div><button data-move="down">▼</button></div>
+    <div class="mobile-controls" aria-label="Touch movement controls"><div class="joystick-ring"><button data-move="up">▲</button><div><button data-move="left">◀</button><button data-action="interact">◆</button><button data-move="right">▶</button></div><button data-move="down">▼</button></div><span>TAP A LOCATION TO TRAVEL</span></div>
     <div class="controls-hint"><kbd>WASD</kbd> MOVE <kbd>SPACE</kbd> INTERACT <kbd>C</kbd> CODEX</div>
     <div class="pause-screen" id="pauseScreen" hidden><div class="pause-card"><span class="eyebrow">FORGE VALLEY</span><h1>World paused.</h1><p>The world will wait. Your progress is saved locally.</p><button class="gold-btn" id="resumeBtn">RESUME ADVENTURE</button></div></div>
     <div class="start-screen" id="startScreen"><div class="title-mark"><span>VN</span><i>✦</i></div><span class="eyebrow">A PLAYABLE PORTFOLIO RPG</span><h1>The Living<br><em>Portfolio</em></h1><p>A world of work, ideas and stories. Enter as a character, not a visitor.</p><button class="gold-btn" id="startBtn">ENTER THE WORLD <span>↗</span></button><small>Best experienced with headphones · WASD or touch</small></div>
     <div class="creation-screen" id="creationScreen" hidden><div class="creation-card"><span class="eyebrow">CHARACTER CREATION</span><h2>Who enters the world?</h2><label>Character name<input id="nameInput" maxlength="20" placeholder="Wanderer" /></label><div class="class-picks" id="classPicks"></div><button class="gold-btn" id="enterBtn">BEGIN ADVENTURE <span>↗</span></button></div></div>
   </main>
-  <script src="app.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
