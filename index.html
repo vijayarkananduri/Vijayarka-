@@ -1,37 +1,26 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#101b20" />
-  <meta name="description" content="The Living Portfolio RPG — explore Vijayarka Nanduri's work as an interactive game world." />
-  <meta property="og:title" content="The Living Portfolio RPG · Vijayarka Nanduri" />
-  <meta property="og:description" content="Enter the world, complete quests, and discover the work." />
-  <title>The Living Portfolio RPG · Vijayarka Nanduri</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css?v=5a6eadf" />
-</head>
-<body>
-  <main class="game-shell" id="gameShell">
-    <canvas id="world" aria-label="Playable portfolio RPG world"></canvas>
-    <div class="vignette"></div>
-    <header class="hud-top">
-      <div class="brand-lockup"><span class="crest">VN</span><div><b>THE LIVING PORTFOLIO</b><small>FORGE VALLEY · SEASON 01</small></div></div>
-      <div class="hud-actions"><button class="hud-btn" id="codexBtn">CODEX <kbd>C</kbd></button><button class="hud-btn" id="questBtn">QUESTS <span id="questBadge">3</span></button><button class="hud-btn" id="pauseBtn">PAUSE <kbd>ESC</kbd></button></div>
-    </header>
-    <section class="player-hud" aria-label="Character status"><div class="avatar-orb" id="avatarOrb">✦</div><div class="status-copy"><b id="heroName">WANDERER</b><span id="heroClass">UNCLASSIFIED</span><div class="xp-line"><i id="xpBar"></i></div><small>LV <strong id="level">1</strong> · <span id="xpText">0</span> XP</small></div></section>
-    <section class="minimap"><div class="minimap-label">FORGE VALLEY</div><canvas id="mini" width="150" height="100"></canvas><span class="north">N</span></section>
-    <div class="location-banner" id="locationBanner"><span class="pin">◆</span><b id="locationName">THE THRESHOLD</b><small id="locationSub">A world waiting to be entered</small></div>
-    <div class="interact-prompt" id="interactPrompt" hidden><span>SPACE</span><b id="interactText">Interact</b></div>
-    <div class="dialogue" id="dialogue" hidden><div class="speaker-line"><span class="speaker-avatar" id="speakerAvatar">✦</span><div><b id="speakerName">THE WORLD</b><small id="speakerRole">FORGE SPIRIT</small></div><button id="dialogueClose">×</button></div><p id="dialogueText"></p><div class="dialogue-hint">SPACE / TAP TO CONTINUE</div></div>
-    <aside class="quest-panel" id="questPanel" hidden><div class="panel-title"><div><span class="eyebrow">ACTIVE OBJECTIVES</span><h2>Quest log</h2></div><button class="panel-close" data-close="questPanel">×</button></div><div id="questList"></div></aside>
-    <aside class="codex-panel" id="codexPanel" hidden><div class="panel-title"><div><span class="eyebrow">FORGE ARCHIVES</span><h2>Codex</h2></div><button class="panel-close" data-close="codexPanel">×</button></div><nav class="codex-tabs"><button class="active" data-tab="artifacts">Artifacts</button><button data-tab="archives">Archives</button><button data-tab="library">Library</button><button data-tab="journey">Journey</button></nav><div class="codex-content" id="codexContent"></div></aside>
-    <div class="mobile-controls" aria-label="Touch movement controls"><div class="joystick-ring"><button data-move="up">▲</button><div><button data-move="left">◀</button><button data-action="interact">◆</button><button data-move="right">▶</button></div><button data-move="down">▼</button></div><span>TAP A LOCATION TO TRAVEL</span></div>
-    <div class="controls-hint"><kbd>WASD</kbd> MOVE <kbd>SPACE</kbd> INTERACT <kbd>C</kbd> CODEX</div>
-    <div class="pause-screen" id="pauseScreen" hidden><div class="pause-card"><span class="eyebrow">FORGE VALLEY</span><h1>World paused.</h1><p>The world will wait. Your progress is saved locally.</p><button class="gold-btn" id="resumeBtn">RESUME ADVENTURE</button></div></div>
-    <div class="start-screen" id="startScreen"><div class="title-mark"><span>VN</span><i>✦</i></div><span class="eyebrow">A PLAYABLE PORTFOLIO RPG</span><h1>The Living<br><em>Portfolio</em></h1><p>A world of work, ideas and stories. Enter as a character, not a visitor.</p><button class="gold-btn" id="startBtn">ENTER THE WORLD <span>↗</span></button><small>Best experienced with headphones · WASD or touch</small></div>
-    <div class="creation-screen" id="creationScreen" hidden><div class="creation-card"><span class="eyebrow">CHARACTER CREATION</span><h2>Who enters the world?</h2><label>Character name<input id="nameInput" maxlength="20" placeholder="Wanderer" /></label><div class="class-picks" id="classPicks"></div><button class="gold-btn" id="enterBtn">BEGIN ADVENTURE <span>↗</span></button></div></div>
-  </main>
-  <script src="app.js?v=b1fedb1"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#171522" />
+    <meta name="color-scheme" content="light" />
+    <title>Vijayarka Nanduri — Research, Software & Creative Work</title>
+    <meta name="description" content="Meet Vijayarka Nanduri, an independent researcher, builder, and writer exploring adaptive interfaces, human-centered AI, software, and creative work." />
+    <meta name="keywords" content="Vijayarka Nanduri, HCI, Alive UI, adaptive interfaces, human-centered AI, software projects, creative technology" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Vijayarka Nanduri" />
+    <meta property="og:title" content="Vijayarka Nanduri — Research, Software & Creative Work" />
+    <meta property="og:description" content="Research, software, and stories—with a human pulse." />
+    <meta property="og:image" content="%BASE_URL%social-card.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vijayarka Nanduri — Research, Software & Creative Work" />
+    <meta name="twitter:description" content="Research, software, and stories—with a human pulse." />
+    <meta name="twitter:image" content="%BASE_URL%social-card.svg" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
