@@ -1,34 +1,35 @@
 :root {
   color-scheme: light;
-  --ink-950: #171522;
-  --ink-800: #2b2938;
-  --paper-50: #fbf9f5;
-  --paper-100: #f3efe7;
-  --paper-200: #e7e0d5;
-  --white: #fff;
-  --violet: #7657f6;
-  --violet-dark: #5a3bd0;
-  --cyan: #74d7e8;
-  --lime: #c9e76b;
-  --muted-ink: #625f6e;
-  --line: #ddd7ce;
-  --focus: #1f72d2;
-  --room-green: #53886d;
-  --room-blue: #456c9a;
-  --room-amber: #b7793e;
-  --room-plum: #80617f;
-  --room-coral: #b55047;
-  --tone-green: #5e8b72;
-  --tone-amber: #be8754;
-  --tone-blue: #607fa7;
-  --tone-plum: #80617f;
-  --tone-dark: #4f4a65;
-  --tone-coral: #b55047;
+  --ink-950: #191714;
+  --ink-800: #302a24;
+  --paper-50: #f3eddf;
+  --paper-100: #e9dfcf;
+  --paper-200: #d9cbb7;
+  --white: #fbf7ed;
+  --violet: #c16e42;
+  --violet-dark: #9e4d2d;
+  --cyan: #d5a36e;
+  --lime: #d3a05c;
+  --muted-ink: #625b51;
+  --line: #d5c8b5;
+  --focus: #ed9b58;
+  --room-green: #587354;
+  --room-blue: #536b72;
+  --room-amber: #a36d42;
+  --room-plum: #765a58;
+  --room-coral: #a85036;
+  --tone-green: #587354;
+  --tone-amber: #a36d42;
+  --tone-blue: #536b72;
+  --tone-plum: #765a58;
+  --tone-dark: #49443d;
+  --tone-coral: #a85036;
   --font-display: 'Space Grotesk Variable', 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Manrope Variable', Manrope, system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
-  --radius-card: 22px;
-  --shadow-soft: 0 24px 70px rgba(23, 21, 34, .08);
+  --font-signature: 'Caveat Variable', Caveat, cursive;
+  --radius-card: 7px;
+  --shadow-soft: 0 20px 52px rgba(25, 23, 20, .12);
   --content-max: 1240px;
   --ease-cinematic: cubic-bezier(.2, .72, .15, 1);
 }
@@ -40,7 +41,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 button { color: inherit; }
 a { color: inherit; }
 img, svg { max-width: 100%; }
-::selection { background: rgba(118, 87, 246, .22); color: var(--ink-950); }
+::selection { background: rgba(193, 110, 66, .24); color: var(--ink-950); }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }

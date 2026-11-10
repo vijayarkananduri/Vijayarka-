@@ -52,7 +52,6 @@ export const creative = [
     summary: 'A collection that maps loss and longing through the language of physics.',
     action: 'Read on Kindle',
     url: 'https://www.amazon.in/dp/B0GZVLSZ3Q/',
-    symbol: 'N',
     tone: 'plum',
   },
   {
@@ -61,7 +60,6 @@ export const creative = [
     summary: 'Love as a reaction, heartbreak as entropy, and the bonds that remain.',
     action: 'Read on Kindle',
     url: 'https://www.amazon.in/dp/B0GZPYV842/',
-    symbol: 'C',
     tone: 'amber',
   },
   {
@@ -70,7 +68,6 @@ export const creative = [
     summary: 'A practical guide to giving AI clearer instructions, with examples and reusable templates.',
     action: 'Open the guide',
     url: 'https://vijayarka.notion.site/Write-It-Right-Get-It-Right-21725fbad98b8030a46ccc8ba43a132a',
-    symbol: 'W',
     tone: 'blue',
   },
   {
@@ -79,7 +76,6 @@ export const creative = [
     summary: 'An episodic fantasy series set in a world inspired by ancient India.',
     action: 'Listen on Pocket FM',
     url: 'https://pocketfm.onelink.me/2IE7/s6fj1j8m',
-    symbol: '◌',
     tone: 'green',
   },
 ];

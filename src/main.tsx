@@ -2,6 +2,8 @@ import { createRoot, hydrateRoot } from 'react-dom/client';
 import { Site } from './App';
 import './styles/tokens.css';
 import './styles/site.css';
+import './styles/forge.css';
+import '@fontsource-variable/caveat';
 import '@fontsource-variable/space-grotesk';
 import '@fontsource-variable/manrope';
 import '@fontsource/ibm-plex-mono/400.css';

@@ -40,7 +40,7 @@ GitHub Pages deploys automatically from `main` through `.github/workflows/deploy
 - `site-routes.json` is the portable public route list used to prerender HTML and generate the sitemap.
 - `src/seo.ts` defines unique titles, descriptions, and route existence.
 - `scripts/prerender.mjs` creates content-bearing pages, metadata, structured data, sitemap, robots, and `404.html`.
-- `src/styles/tokens.css` and `src/styles/site.css` define the design system.
+- `src/styles/tokens.css`, `src/styles/site.css`, and `src/styles/forge.css` define the design system and the restrained paper-and-ink art direction.
 
 ## Before launch: factual review
 
@@ -56,4 +56,4 @@ The site uses bundled fonts from the `@fontsource` packages and original CSS/SVG
 
 ## External handoff
 
-This folder is ready to connect to a GitHub repository and a Netlify site. The included ZIP is a portable source/build handoff; it does not contain credentials and does not publish or push to an unspecified external account.
+This source is connected to the existing GitHub repository and deploys to GitHub Pages from `main`. A ZIP handoff contains the source, deployment configuration, and production static output; it contains no credentials. Netlify configuration remains available for an optional alternate host.
