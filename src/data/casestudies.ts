@@ -15,7 +15,7 @@ export const caseStudies: Record<string, Study> = {
     problem: 'Pedometers are spreadsheets that shout. Aggressive notifications, and little respect for the person wearing them.',
     build: 'A step tracker designed like a cockpit instrument, with five customizable LED themes and a live-trace telemetry feed.',
     flex: 'A 120-permutation visual cycle. Miss a day and you keep your journey: it continues in reverse or reshuffles its stages instead of resetting.' },
-  'nslv-19': { sort: 4, platform: '', status: 'Completed', summary: 'I’m part of it.' },
+  'nslv-19': { sort: 4, platform: '', status: 'Completed', summary: 'I am part of it.' },
   khata: { sort: 5, platform: 'Android · Kotlin · Finance',
     problem: 'Finance apps ask for bank links and cloud accounts, turning personal spending into a data asset.',
     build: 'A local-first ledger with no cloud sync. An on-device restock nudge learns grocery habits without an internet connection.',
@@ -86,7 +86,7 @@ export const caseStudies: Record<string, Study> = {
 
 export const extraProjects: Project[] = [
   { slug: 'kosha', title: 'KOSHA', eyebrow: '', category: 'Android', platform: '', status: 'Private beta', summary: '', story: '', features: ['AES-256-GCM with Android Keystore', 'Swipeable card-deck vault', 'Hidden duress PIN'], palette: 'dark', sort: 1, externalLabel: 'Ask about KOSHA' },
-  { slug: 'nslv-19', title: 'NSLV-19', eyebrow: '', category: 'Experiment', platform: '', status: 'Completed', summary: '', story: '', features: ['I’m part of it.'], palette: 'blue', sort: 4 },
+  { slug: 'nslv-19', title: 'NSLV-19', eyebrow: '', category: 'Experiment', platform: '', status: 'Completed', summary: '', story: '', features: ['I am part of it.'], palette: 'blue', sort: 4 },
   { slug: 'flexrun', title: 'FlexRun', eyebrow: '', category: 'Experiment', platform: '', status: 'Live', summary: '', story: '', features: ['Body-motion controls', 'On-device pose estimation', 'Pixel arcade play'], palette: 'coral', sort: 7 },
   { slug: 'epochs', title: 'Epochs', eyebrow: '', category: 'Experiment', platform: '', status: 'Live', summary: '', story: '', features: ['Live ML experiments', 'Calibration and confidence', 'Interactive tables and code'], palette: 'amber', sort: 11 },
   { slug: 'klar', title: 'Klar', eyebrow: '', category: 'Web & PWA', platform: '', status: 'Live', summary: '', story: '', features: ['Conversational German practice', 'Context-aware replies', 'Built for real preparation'], palette: 'green', sort: 20 },
