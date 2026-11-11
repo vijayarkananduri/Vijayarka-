@@ -17,6 +17,9 @@ body { font-size: 16px; }
 .footer-links a, .social-links a { font-size: 13px; }
 .footer-bottom, .detail-disclaimer { font-size: 11px; }
 
+/* One proportional adjustment across the whole site: content is 2.5% smaller. */
+html { zoom: 97.5%; }
+
 /* Tape, stacked paper, curled corners */
 .tape { position: absolute; z-index: 5; top: -11px; left: 50%; width: 88px; height: 24px; background: var(--tape); transform: translateX(-50%) rotate(-3deg); box-shadow: 0 1px 2px rgba(0,0,0,.12); pointer-events: none; transition: transform .35s var(--ease-cinematic); clip-path: polygon(0 0,3% 12%,0 25%,3% 38%,0 50%,3% 62%,0 75%,3% 88%,0 100%,100% 100%,97% 88%,100% 75%,97% 62%,100% 50%,97% 38%,100% 25%,97% 12%,100% 0); }
 .tape-b { background: var(--tape-2); transform: translateX(-50%) rotate(4deg); }
