@@ -221,7 +221,7 @@ export function ProjectArtwork({ project, large = false }: { project: Project; l
     <rect width="640" height="320" fill={`url(#grain-${project.slug})`} opacity=".48" />
     <path d="M30 36h45m-45 7h24M548 269h62" stroke="var(--art-ink)" strokeOpacity=".32" strokeWidth="1" />
     <g className="project-art-mark">{projectMarks[project.slug] ?? <g stroke="var(--art-ink)" fill="none" strokeLinecap="round" strokeWidth="3"><path d="M181 75h278v195H181z" fill="var(--art-paper)" /><path d="M215 118h194m-194 27h157m-157 27h102" /><path d="m250 226 45-38 42 24 56-53" stroke="var(--art-accent)" strokeWidth="5" /><circle cx="393" cy="159" r="7" fill="var(--art-accent)" /></g>}</g>
-    <text x="32" y="292" fill="var(--art-ink)" className="art-label">{String(project.sort).padStart(2, '0')} / {project.category.toUpperCase()}</text>
+    {project.slug !== 'nslv-19' && <text x="32" y="292" fill="var(--art-ink)" className="art-label">{String(project.sort).padStart(2, '0')} / {project.category.toUpperCase()}</text>}
     <path d="M32 51v24m0-24h24m552 194v24m0-24h-24" fill="none" stroke="var(--art-accent)" strokeWidth="2" />
   </svg>;
 }

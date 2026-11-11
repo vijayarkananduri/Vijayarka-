@@ -194,7 +194,7 @@ function PageIntro({ index, title, subtitle, accent }: { index: string; title: R
 function VisualTile({ project, large = false }: { project: Project; large?: boolean }) {
   return <div className={`visual-tile visual-${project.palette} ${large ? 'visual-large' : ''}`} aria-hidden="true">
     <ProjectArtwork project={project} large={large} />
-    <span className="tile-label">{project.platform}</span><span className="tile-index">{String(project.sort).padStart(2, '0')}</span>
+    {project.slug !== 'nslv-19' && <><span className="tile-label">{project.platform}</span><span className="tile-index">{String(project.sort).padStart(2, '0')}</span></>}
   </div>;
 }
 
