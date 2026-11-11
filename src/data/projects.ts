@@ -1,5 +1,5 @@
 export type ProjectCategory = 'Web & PWA' | 'Android' | 'Experiment';
-export type ProjectStatus = 'Live' | 'Public project' | 'Research' | 'In development';
+export type ProjectStatus = 'Live' | 'Public project' | 'Research' | 'In development' | 'Private beta' | 'Completed';
 
 export type Project = {
   slug: string;
@@ -18,10 +18,13 @@ export type Project = {
   paperUrl?: string;
   privacyNote?: string;
   featured?: boolean;
+  problem?: string;
+  build?: string;
+  flex?: string;
   sort: number;
 };
 
-export const projects: Project[] = [
+const baseProjects: Project[] = [
   {
     slug: 'mawo', title: 'MAWO', eyebrow: 'Your progress, made visible', category: 'Web & PWA', platform: 'Web · PWA · Android project', status: 'Live',
     summary: 'A habit tracker built around progress you can feel: the interface changes as your routines grow.',
@@ -73,6 +76,13 @@ export const projects: Project[] = [
     story: 'Draftbook explores an assistant that stays in the background while a writer works. Vijayarka confirms that the product is working again; the linked research preprint describes an earlier version, so it should not be used as a current service-status notice.',
     features: ['Writing-first workspace', 'Low-interruption suggestions', 'Research on emotion-aware writing tools'], palette: 'amber',
     externalUrl: 'https://draftb00k.netlify.app/', externalLabel: 'Open Draftbook', paperUrl: 'https://zenodo.org/records/15865688', featured: true, sort: 8,
+  },
+  {
+    slug: 'draftsync', title: 'Draftsync', eyebrow: 'Your writing, on your own shelf', category: 'Web & PWA', platform: 'Web app · writing', status: 'Live',
+    summary: 'A writer’s cockpit where every book has a place on your shelf, and you choose what to open.',
+    story: 'Draftsync gives each book its own place on a shelf. No draft opens by default; you choose what to pick up.',
+    features: ['A shelf for your books', 'Choose which draft to open', 'A focused writing cockpit'], palette: 'amber',
+    externalUrl: 'https://draftsync.netlify.app/', externalLabel: 'Open Draftsync', sort: 8.5,
   },
   {
     slug: 'tenet', title: 'Tenet', eyebrow: 'A journal that changes with the moment', category: 'Web & PWA', platform: 'Web app', status: 'Live',
@@ -131,5 +141,11 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/vijayarkananduri/Sylph', externalUrl: 'https://github.com/vijayarkananduri/Sylph', externalLabel: 'Explore Sylph', sort: 16,
   },
 ];
+
+import { caseStudies, extraProjects } from './casestudies';
+
+export const projects: Project[] = [...baseProjects, ...extraProjects]
+  .map((p) => { const c = caseStudies[p.slug]; return c ? { ...p, ...c, story: p.story || c.build || '' } : p; })
+  .sort((a, b) => a.sort - b.sort);
 
 export const getProject = (slug: string) => projects.find((project) => project.slug === slug);

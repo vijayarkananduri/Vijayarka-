@@ -3,6 +3,7 @@ import { Site } from './App';
 import './styles/tokens.css';
 import './styles/site.css';
 import './styles/forge.css';
+import './styles/scrap.css';
 import '@fontsource-variable/caveat';
 import '@fontsource-variable/space-grotesk';
 import '@fontsource-variable/manrope';

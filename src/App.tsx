@@ -22,7 +22,7 @@ function Mark() {
   return <span className="brand-mark"><ForgeMark /></span>;
 }
 
-function Header({ path, onPlay }: { path: string; onPlay: () => void }) {
+function Header({ path, onPlay, theme, onThemeToggle }: { path: string; onPlay: () => void; theme: 'day' | 'night'; onThemeToggle: () => void }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuToggleRef = useRef<HTMLButtonElement>(null);
   const closeMenuRef = useRef<HTMLButtonElement>(null);
@@ -52,9 +52,42 @@ function Header({ path, onPlay }: { path: string; onPlay: () => void }) {
         <button ref={closeMenuRef} className="mobile-menu-close" onClick={() => setMenuOpen(false)}>Close menu <span aria-hidden="true">×</span></button>
         {navItems.map((item) => <a key={item.href} href={withBasePath(item.href)} aria-current={path.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>)}
         <button className="nav-play" onClick={onPlay}><span className="play-dot" /> Play intro</button>
+        <button className="theme-toggle" type="button" onClick={onThemeToggle} aria-label={`Switch to ${theme === 'day' ? 'night' : 'day'} mode`} aria-pressed={theme === 'night'}>
+          <svg className="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+          <svg className="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.4A8.7 8.7 0 0 1 8.6 3.8 8.8 8.8 0 1 0 20.2 15.4Z"/><path d="m16.8 4.5.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5.5-1.4Z"/></svg>
+          <span>{theme === 'day' ? 'Night' : 'Day'}</span>
+        </button>
       </nav>
     </div>
   </header>;
+}
+
+function Doodle({ kind, speed = 0.05 }: { kind: 'arrow' | 'star' | 'clip'; speed?: number }) {
+  const d = { arrow: 'M6 52c30 10 66-4 78-38m0 0-4 20m4-20-20 6', star: 'M30 4l6 18 18 2-14 12 5 18-15-10-15 10 5-18L6 24l18-2z', clip: 'M26 12v40a10 10 0 0 0 20 0V16a6 6 0 0 0-12 0v34' }[kind];
+  return <svg className={`doodle doodle-${kind}`} data-float={speed} viewBox="0 0 90 70" aria-hidden="true" focusable="false"><path d={d} /></svg>;
+}
+
+function SlamBook() {
+  const [f, setF] = useState({ name: '', word: '', ask: 'A project', msg: '' });
+  const set = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => setF((v) => ({ ...v, [k]: e.target.value }));
+  const body = `Slam book entry\n\nName: ${f.name}\nOne word for your work: ${f.word}\nI’d like to ask about: ${f.ask}\n\n${f.msg}`;
+  const href = `mailto:${profiles.email}?subject=${encodeURIComponent(`Slam book: ${f.name || 'a visitor'}`)}&body=${encodeURIComponent(body)}`;
+  const mine = [['Name', 'Vijayarka Nanduri'], ['Known for', 'research, software and stories'], ['Can’t stop thinking about', 'interfaces that grow with the person using them'], ['House rule', 'private by default, a human on the other side'], ['Right now', `${projects.length} projects deep, still making more`]];
+  return <section id="slam-book" className="slam" data-reveal>
+    <article className="slam-page slam-mine"><span className="tape" aria-hidden="true" />
+      <p className="eyebrow mono">SLAM BOOK / PAGE 01</p><h2>My page, <em>filled in.</em></h2>
+      <dl>{mine.map(([q, a]) => <div key={q}><dt>{q}</dt><dd>{a}</dd></div>)}</dl>
+    </article>
+    <article className="slam-page slam-yours"><span className="tape tape-b" aria-hidden="true" />
+      <p className="eyebrow mono">SLAM BOOK / PAGE 02</p><h2>Now <em>yours.</em></h2>
+      <label><span>Your name</span><input value={f.name} onChange={set('name')} placeholder="Write it here" autoComplete="name" /></label>
+      <label><span>One word for my work</span><input value={f.word} onChange={set('word')} placeholder="Honest is fine" /></label>
+      <label><span>I’d like to ask about</span><select value={f.ask} onChange={set('ask')}><option>A project</option><option>Research</option><option>A collaboration</option><option>Something else</option></select></label>
+      <label><span>Leave a line</span><textarea rows={3} value={f.msg} onChange={set('msg')} placeholder="A question, a hello, an idea…" /></label>
+      <a className="button button-primary slam-send" href={href}>Sign the slam book <span>↗</span></a>
+      <p className="slam-hint">This opens your email app with the page already filled in. No form, no tracking.</p>
+    </article>
+  </section>;
 }
 
 function Footer() {
@@ -171,7 +204,7 @@ function Status({ status }: { status: Project['status'] }) {
 
 function ProjectCard({ project, featured = false }: { project: Project; featured?: boolean }) {
   return <article data-reveal className={`project-card ${featured ? 'project-featured' : ''}`} style={{ '--tone': `var(--tone-${project.palette})` } as CSSProperties}>
-    <a href={withBasePath(`/projects/${project.slug}/`)} className="project-card-link" aria-label={`View ${project.title} project`} onPointerMove={(event) => {
+    <span className="tape" aria-hidden="true" /><a href={withBasePath(`/projects/${project.slug}/`)} className="project-card-link" aria-label={`View ${project.title} project`} onPointerMove={(event) => {
       if (event.pointerType !== 'mouse' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const bounds = event.currentTarget.getBoundingClientRect();
       const x = (event.clientX - bounds.left) / bounds.width - .5;
@@ -181,9 +214,9 @@ function ProjectCard({ project, featured = false }: { project: Project; featured
     }} onPointerLeave={(event) => { event.currentTarget.style.removeProperty('--tilt-x'); event.currentTarget.style.removeProperty('--tilt-y'); }}>
       <VisualTile project={project} large={featured} />
       <div className="project-card-body">
-        <div className="card-meta"><span className="mono">{project.category}</span><Status status={project.status} /></div>
-        <p className="card-eyebrow">{project.eyebrow}</p><h3>{project.title}<span className="card-arrow">↗</span></h3><p className="card-summary">{project.summary}</p>
-        <div className="card-foot"><span>{project.platform}</span><span className="text-link">Explore project <b>↗</b></span></div>
+        {project.slug !== 'nslv-19' && <div className="card-meta"><span className="mono">{project.category}</span><Status status={project.status} /></div>}
+        {project.eyebrow && <p className="card-eyebrow">{project.eyebrow}</p>}<h3>{project.title}<span className="card-arrow">↗</span></h3><p className="card-summary">{project.summary}</p>
+        <div className="card-foot"><span>{project.platform}</span><span className="text-link">Read the case study <b>↗</b></span></div>
       </div>
     </a>
   </article>;
@@ -212,9 +245,9 @@ function Home({ onPlay }: { onPlay: () => void }) {
     </section>
 
     <section className="home-work section-pad" id="selected-work" data-reveal>
-      <div className="section-heading"><div><p className="eyebrow mono">02 / THE WORKSHOP</p><h2>Things I<br /><em>couldn’t leave alone.</em></h2></div><p className="section-intro-copy">A few things built around a question, an itch, or a feeling that wouldn’t sit still.</p></div>
+      <div className="section-heading"><Doodle kind="arrow" /><div><p className="eyebrow mono">02 / THE WORKSHOP</p><h2>Things I<br /><em>couldn’t leave alone.</em></h2></div><p className="section-intro-copy">A few things built around a question, an itch, or a feeling that wouldn’t sit still.</p></div>
       <div className="project-grid home-project-grid">{featured.map((project, i) => <ProjectCard key={project.slug} project={project} featured={i === 0} />)}</div>
-      <div className="section-end"><span className="mono">15 PUBLIC PROJECTS · STILL MAKING MORE</span><a className="text-link" href={withBasePath("/projects/")}>Enter the project room <b>↗</b></a></div>
+      <div className="section-end"><span className="mono">{projects.length} PROJECTS · STILL MAKING MORE</span><a className="text-link" href={withBasePath("/projects/")}>Enter the project room <b>↗</b></a></div>
     </section>
 
     <section className="home-research section-pad" data-reveal>
@@ -225,10 +258,10 @@ function Home({ onPlay }: { onPlay: () => void }) {
 
     <section className="home-creative section-pad" data-reveal>
       <div className="creative-art"><div className="paper-layer paper-back" /><div className="paper-layer paper-mid" /><div className="paper-book"><span>somewhere<br />between<br /><em>science</em><br />& the heart</span><i>VN</i></div><div className="paper-moon" /><div className="paper-orbit" /></div>
-      <div className="creative-copy"><p className="eyebrow mono">04 / THE STORY STUDIO</p><h2>Not everything<br />fits in an <em>interface.</em></h2><p>Poetry, small games, audio fiction, and ideas that had to be written down before they disappeared.</p><a className="button button-paper" href={withBasePath("/creative/")}>Explore the creative room <span>↗</span></a></div>
+      <div className="creative-copy"><Doodle kind="star" speed={0.08} /><p className="eyebrow mono">04 / THE STORY STUDIO</p><h2>Not everything<br />fits in an <em>interface.</em></h2><p>Poetry, small games, audio fiction, and ideas that had to be written down before they disappeared.</p><a className="button button-paper" href={withBasePath("/creative/")}>Explore the creative room <span>↗</span></a></div>
     </section>
 
-    <section className="home-contact section-pad" data-reveal><div><p className="eyebrow mono">05 / THE OPEN DOOR</p><h2>Have a good<br /><em>question?</em></h2><p>Research, a project, a story, or just a curious conversation—there’s room for it here.</p><a href={withBasePath("/contact/")} className="button button-primary">Let’s talk <span>↗</span></a></div><div className="contact-graphic" aria-hidden="true"><span>HELLO</span><svg viewBox="0 0 28 28"><path d="M5 14h18M14 5v18M7.5 7.5l13 13m0-13-13 13" /></svg><i>01</i></div></section>
+    <section className="home-contact section-pad" data-reveal><div><p className="eyebrow mono">05 / THE OPEN DOOR</p><h2>Have a good<br /><em>question?</em></h2><p>Research, a project, a story, or just a curious conversation—there’s room for it here.</p><a href={withBasePath("/contact/#slam-book")} className="button button-primary">Sign the slam book <span>↗</span></a></div><div className="contact-graphic" aria-hidden="true"><span>HELLO</span><svg viewBox="0 0 28 28"><path d="M5 14h18M14 5v18M7.5 7.5l13 13m0-13-13 13" /></svg><i>01</i></div></section>
   </PageShell>;
 }
 
@@ -254,19 +287,26 @@ function ProjectsPage() {
 
 function ProjectDetail({ project }: { project: Project }) {
   const related = projects.filter((item) => item.slug !== project.slug).slice(0, 3);
+  const at = projects.findIndex((item) => item.slug === project.slug);
+  const prev = projects[(at + projects.length - 1) % projects.length];
+  const next = projects[(at + 1) % projects.length];
+  const primaryHref = project.externalUrl ?? project.repoUrl;
+  const ask = `mailto:${profiles.email}?subject=${encodeURIComponent(`A question about ${project.title}`)}`;
+  const actions = <>{primaryHref ? <a className="button button-primary" href={primaryHref} target="_blank" rel="noreferrer">{project.externalLabel ?? (project.externalUrl ? 'Open project' : 'View the source')} <span>↗</span></a> : <a className="button button-primary" href={ask}>Ask about {project.title} <span>↗</span></a>}{project.repoUrl && project.externalUrl && project.repoUrl !== project.externalUrl && <a className="button button-outline" href={project.repoUrl} target="_blank" rel="noreferrer">View source <span>↗</span></a>}{primaryHref && <a className="text-link ask-link" href={ask}>Ask a question <b>↗</b></a>}{project.paperUrl && <a className="detail-paper-link" href={project.paperUrl} target="_blank" rel="noreferrer">Read the related preprint ↗</a>}</>;
   return <PageShell className={`project-detail room-${project.palette}`}>
     <div className="page-wrap">
       <a className="back-link mono" href={withBasePath("/projects/")}>← ALL PROJECTS</a>
       <section className="project-detail-hero" data-reveal style={{ '--tone': `var(--tone-${project.palette})` } as CSSProperties}>
-        <div className="project-detail-copy"><p className="eyebrow mono">{project.category} <span>/</span> {project.platform}</p><Status status={project.status} /><h1>{project.title}<i>.</i></h1><p className="project-detail-deck">{project.summary}</p>
-      <div className="detail-actions">{project.externalUrl ? <a className="button button-primary" href={project.externalUrl} target="_blank" rel="noreferrer">{project.externalLabel ?? 'Visit project'} <span>↗</span></a> : project.repoUrl ? <a className="button button-primary" href={project.repoUrl} target="_blank" rel="noreferrer">{project.externalLabel ?? 'View project source'} <span>↗</span></a> : <a className="button button-primary" href={`mailto:${profiles.email}?subject=${encodeURIComponent(`A question about ${project.title}`)}`}>Ask about this project <span>↗</span></a>}
-          {project.repoUrl && project.externalUrl && project.repoUrl !== project.externalUrl && <a className="button button-outline" href={project.repoUrl} target="_blank" rel="noreferrer">View source <span>↗</span></a>}
-          {project.paperUrl && <a className="detail-paper-link" href={project.paperUrl} target="_blank" rel="noreferrer">Read the related preprint ↗</a>}</div>
+        <div className="project-detail-copy">{project.slug !== 'nslv-19' && <><p className="eyebrow mono">{project.category} <span>/</span> {project.platform}</p><Status status={project.status} /></>}<h1>{project.title}<i>.</i></h1><p className="project-detail-deck">{project.summary}</p>
+      <div className="detail-actions">{actions}</div>
         </div>
         <VisualTile project={project} large />
       </section>
-      <div className="detail-columns" data-reveal><section className="detail-story"><p className="eyebrow mono">THE IDEA</p><h2>What it’s <em>about.</em></h2><p>{project.story}</p>{project.privacyNote && <aside className="detail-note"><span className="mono">A NOTE ON THE DETAILS</span><p>{project.privacyNote}</p></aside>}</section>
-        <section className="detail-features"><p className="eyebrow mono">A FEW PIECES</p><h2>Inside the <em>room.</em></h2><ul>{project.features.map((feature, i) => <li key={feature}><span className="feature-number mono">0{i + 1}</span>{feature}<span>↗</span></li>)}</ul><p className="detail-disclaimer">Project details and links can change. The linked project page or repository is the best place to check the latest release information.</p></section></div>
+      {project.problem && project.build && project.flex && <section className="case-notes" aria-label="Case study">{([['01', 'The itch', project.problem], ['02', 'The build', project.build], ['03', 'The flex', project.flex]] as const).map(([n, t, text], i) => <article key={n} data-reveal className={`case-note note-${i + 1}`}><span className="tape" aria-hidden="true" /><span className="case-no mono">{n}</span><h2>{t}</h2><p>{text}</p></article>)}</section>}
+      {project.slug !== 'nslv-19' && <div className="detail-columns" data-reveal><section className="detail-story"><p className="eyebrow mono">IN ONE LINE</p><p className="pull-quote">{project.eyebrow}</p>{!project.problem && project.story && <p className="story-text">{project.story}</p>}{project.privacyNote && <aside className="detail-note"><span className="mono">A NOTE ON THE DETAILS</span><p>{project.privacyNote}</p></aside>}</section>
+        <section className="detail-features"><p className="eyebrow mono">A FEW PIECES</p><h2>Inside the <em>room.</em></h2><ul>{project.features.map((feature, i) => <li key={feature}><span className="feature-number mono">0{i + 1}</span>{feature}<span>↗</span></li>)}</ul><p className="detail-disclaimer">Details and links can change. The live project or repository is the best place to check the latest.</p></section></div>}
+      {project.slug !== 'nslv-19' && <section className="cta-band" data-reveal><div><p className="eyebrow mono">YOUR TURN</p><h2>See how it <em>holds up.</em></h2></div><div className="cta-actions">{actions}</div></section>}
+      <nav className="page-turn" aria-label="More projects"><a href={withBasePath(`/projects/${prev.slug}/`)}><span className="mono">← PREVIOUS PAGE</span><strong>{prev.title}</strong></a><a href={withBasePath(`/projects/${next.slug}/`)}><span className="mono">NEXT PAGE →</span><strong>{next.title}</strong></a></nav>
       <section className="related-projects"><div className="section-heading"><div><p className="eyebrow mono">KEEP WANDERING</p><h2>Another <em>room?</em></h2></div><a className="text-link" href={withBasePath("/projects/")}>All projects ↗</a></div><div className="project-grid">{related.map((item) => <ProjectCard key={item.slug} project={item} />)}</div></section>
     </div>
   </PageShell>;
@@ -305,7 +345,7 @@ function AboutPage() {
     <div className="page-wrap"><PageIntro index="04" accent="plum" title={<>A mind that likes<br />to make <em>things.</em></>} subtitle="Researcher, builder, writer. The labels are different; the curiosity underneath is the same." />
       <section className="about-statement" data-reveal><div className="about-mark"><ForgeMark /></div><div><p className="eyebrow mono">THE THROUGH-LINE</p><h2>Think it.<br /><em>Make it felt.</em></h2><p>I’m Vijayarka Nanduri. I work across research, software, and writing, following ideas until they find the form that fits. Sometimes that means a case study about adaptive interfaces. Sometimes it’s a private utility, a strange little game, or a story that starts with science and ends somewhere more human.</p><p>My work keeps returning to a few questions: Can an interface grow with the person using it? Can an AI tool help without taking over? Can software be useful and still leave someone feeling something?</p></div></section>
       <section className="about-pillars"><article><span className="pillar-no mono">01</span><h3>Research</h3><p>Human-computer interaction, adaptive interfaces, and ways to make machine learning easier to understand.</p><a href={withBasePath("/research/")}>Visit Research ↗</a></article><article><span className="pillar-no mono">02</span><h3>Build</h3><p>Apps and experiments that connect a clear purpose to a human-sized experience.</p><a href={withBasePath("/projects/")}>Browse Projects ↗</a></article><article><span className="pillar-no mono">03</span><h3>Create</h3><p>Poetry, stories, games, and other ideas that need room beyond a product screen.</p><a href={withBasePath("/creative/")}>Enter Creative ↗</a></article></section>
-      <section className="about-finale"><p className="eyebrow mono">STILL IN PROGRESS, BY DESIGN</p><p>Not a finished map. More like a studio with the lights on.</p><a className="button button-outline" href={withBasePath("/contact/")}>Say hello <span>↗</span></a></section>
+      <section className="about-finale"><p className="eyebrow mono">STILL IN PROGRESS, BY DESIGN</p><p>Not a finished map. More like a studio with the lights on.</p><a className="button button-outline" href={withBasePath("/contact/#slam-book")}>Sign the slam book <span>↗</span></a></section>
     </div>
   </PageShell>;
 }
@@ -314,6 +354,7 @@ function ContactPage() {
   return <PageShell className="contact-page">
     <div className="page-wrap"><PageIntro index="05" accent="coral" title={<>An open door<br />for a good <em>idea.</em></>} subtitle="A question, a collaboration, or something you’ve been thinking about? Write a line and let’s see where it goes." />
       <div className="contact-grid" data-reveal><section className="contact-main"><p className="eyebrow mono">THE DIRECT LINE</p><h2>Start with<br /><em>hello.</em></h2><p>Research collaboration, product conversations, creative work, and curious questions are all welcome.</p><a className="email-link" href={`mailto:${profiles.email}`}>{profiles.email}<span>↗</span></a><a className="button button-primary" href={`mailto:${profiles.email}?subject=${encodeURIComponent('Hello, Vijayarka')}`}>Write an email <span>↗</span></a></section><aside className="contact-side"><div className="contact-orbit"><span>OPEN</span><i>↗</i></div><p className="eyebrow mono">ELSEWHERE ON THE INTERNET</p><a href={profiles.linkedin} target="_blank" rel="noreferrer">LinkedIn <span>Professional notes</span><b>↗</b></a><a href={profiles.github} target="_blank" rel="noreferrer">GitHub <span>Projects and source</span><b>↗</b></a><a href={profiles.youtube} target="_blank" rel="noreferrer">YouTube <span>Ideas in motion</span><b>↗</b></a><a href={profiles.orcid} target="_blank" rel="noreferrer">ORCID <span>Research identity</span><b>↗</b></a></aside></div>
+      <SlamBook />
       <div className="contact-endnote"><span>NO FORM TO DISAPPEAR INTO.</span><span>JUST A HUMAN ON THE OTHER SIDE.</span></div>
     </div>
   </PageShell>;
@@ -326,6 +367,8 @@ function NotFound() {
 export function Site({ path }: { path: string }) {
   const normalized = normalizePath(path);
   const [introOpen, setIntroOpen] = useState(false);
+  const [theme, setTheme] = useState<'day' | 'night'>('day');
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const siteRef = useRef<HTMLDivElement>(null);
   const projectMatch = normalized.match(/^\/projects\/([^/]+)\/$/);
   const researchMatch = normalized.match(/^\/research\/([^/]+)\/$/);
@@ -341,6 +384,24 @@ export function Site({ path }: { path: string }) {
   else if (normalized === '/about/') page = <AboutPage />;
   else if (normalized === '/contact/') page = <ContactPage />;
   else page = <NotFound />;
+
+  useEffect(() => {
+    try { const saved = window.localStorage.getItem('vijayarka-theme'); if (saved === 'day' || saved === 'night') setTheme(saved); } catch { /* Storage can be unavailable in private browsing. */ }
+  }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle('theme-night', theme === 'night');
+    document.documentElement.dataset.theme = theme;
+    document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute('content', theme === 'night' ? '#191714' : '#f3eddf');
+    try { window.localStorage.setItem('vijayarka-theme', theme); } catch { /* Keep the toggle usable when storage is unavailable. */ }
+  }, [theme]);
+
+  useEffect(() => {
+    const update = () => setShowScrollTop(window.scrollY > 420);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  }, []);
 
   useEffect(() => {
     const root = siteRef.current;
@@ -388,11 +449,24 @@ export function Site({ path }: { path: string }) {
     return () => { hero.removeEventListener('pointermove', onPointer); hero.removeEventListener('pointerleave', resetPointer); window.removeEventListener('scroll', queueUpdate); if (frame) window.cancelAnimationFrame(frame); };
   }, []);
 
-  return <div ref={siteRef} className="site-root" data-route-known={known}>
+  useEffect(() => {
+    const items = Array.from(siteRef.current?.querySelectorAll<HTMLElement>('[data-float]') ?? []);
+    if (!items.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let frame = 0;
+    const tick = () => { frame = 0; const vh = window.innerHeight; items.forEach((el) => { const r = (el.parentElement ?? el).getBoundingClientRect(); if (r.bottom < -200 || r.top > vh + 200) return; el.style.setProperty('--fy', `${(-(r.top + r.height / 2 - vh / 2) * parseFloat(el.dataset.float || '0')).toFixed(1)}px`); }); };
+    const queue = () => { if (!frame) frame = window.requestAnimationFrame(tick); };
+    window.addEventListener('scroll', queue, { passive: true }); tick();
+    return () => { window.removeEventListener('scroll', queue); if (frame) window.cancelAnimationFrame(frame); };
+  }, []);
+
+  return <div ref={siteRef} className="site-root" data-route-known={known} data-theme={theme}>
     <a className="skip-link" href="#main-content">Skip to content</a>
-    <Header path={normalized} onPlay={() => setIntroOpen(true)} />
+    <Header path={normalized} onPlay={() => setIntroOpen(true)} theme={theme} onThemeToggle={() => setTheme((current) => current === 'day' ? 'night' : 'day')} />
     {page}
     <Footer />
     <Intro open={introOpen} onClose={() => setIntroOpen(false)} />
+    <button className={`scroll-top ${showScrollTop ? 'is-visible' : ''}`} type="button" aria-label="Scroll back to top" tabIndex={showScrollTop ? 0 : -1} onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" /></svg><span>Top</span>
+    </button>
   </div>;
 }

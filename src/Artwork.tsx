@@ -176,6 +176,38 @@ const projectMarks: Record<string, ReactNode> = {
     <path d="M164 127c29-23 61-29 94-27m130 8c34 8 62 22 86 44" fill="none" stroke="var(--art-accent)" strokeWidth="3" />
     <path d="M192 92v31m-12-19h24m204 29v30m-12-18h24" strokeWidth="2" opacity=".5" />
   </g>,
+  kosha: <g className="mark-kosha" stroke="var(--art-ink)" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="236" y="62" width="170" height="210" rx="10" fill="var(--art-paper)" strokeWidth="3" transform="rotate(-9 321 167)" opacity=".55" />
+    <rect x="236" y="62" width="170" height="210" rx="10" fill="var(--art-paper)" strokeWidth="3" transform="rotate(7 321 167)" opacity=".8" />
+    <rect x="236" y="62" width="170" height="210" rx="10" fill="var(--art-paper)" strokeWidth="3" />
+    <path d="M262 108h72m-72 22h118m-118 22h96" strokeWidth="3" opacity=".6" />
+    <rect x="292" y="190" width="58" height="46" rx="6" fill="var(--art-accent)" strokeWidth="3" /><path d="M303 190v-14a18 18 0 0 1 36 0v14" fill="none" strokeWidth="4" /><circle cx="321" cy="212" r="5" fill="var(--art-paper)" stroke="none" />
+  </g>,
+  'nslv-19': <g className="mark-nslv" stroke="var(--art-ink)" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M60 262c120-24 240-24 520 0" fill="none" strokeWidth="3" opacity=".5" />
+    <ellipse cx="320" cy="108" rx="62" ry="74" fill="var(--art-paper)" strokeWidth="3" /><path d="M320 34v148M262 90c40 14 76 14 116 0" fill="none" strokeWidth="2" opacity=".45" />
+    <path d="M308 182l-12 34m36-34 12 34M296 216h48" fill="none" strokeWidth="3" /><rect x="296" y="216" width="48" height="32" rx="3" fill="var(--art-accent)" strokeWidth="3" />
+    <path d="M470 80h40m-40 52h40m-40 52h40" strokeWidth="2" opacity=".5" /><circle cx="150" cy="86" r="5" fill="var(--art-accent)" stroke="none" /><path d="M118 60h64" strokeWidth="2" strokeDasharray="3 7" opacity=".5" />
+  </g>,
+  flexrun: <g className="mark-flexrun" stroke="var(--art-ink)" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M110 262H530" fill="none" strokeWidth="3" opacity=".5" />
+    <circle cx="320" cy="92" r="20" fill="var(--art-paper)" strokeWidth="4" />
+    <path d="M320 112v70m0-58-52 28m52-28 58-30m-58 88-44 62m44-62 52 54" fill="none" strokeWidth="5" />
+    {[[320,124],[268,152],[378,94],[276,244],[372,236]].map(([x,y]) => <circle key={x+'-'+y} cx={x} cy={y} r="7" fill="var(--art-accent)" stroke="var(--art-ink)" strokeWidth="2" className="flex-joint" />)}
+    <path d="M150 140c-20 20-20 60 0 80m-30-110c-34 36-34 106 0 142" fill="none" strokeWidth="3" opacity=".45" />
+  </g>,
+  epochs: <g className="mark-epochs" stroke="var(--art-ink)" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="150" y="64" width="340" height="204" rx="5" fill="var(--art-paper)" strokeWidth="3" />
+    <path d="M186 98v140h272" fill="none" strokeWidth="3" /><path d="M200 112c40 6 54 78 96 98s90 24 150 26" fill="none" stroke="var(--art-accent)" strokeWidth="4" />
+    <circle cx="256" cy="176" r="7" fill="var(--art-accent)" stroke="none" /><circle cx="338" cy="222" r="7" fill="var(--art-accent)" stroke="none" />
+    <path d="M214 258h40m26 0h26" strokeWidth="2" opacity=".4" /><path d="M376 120h58m-58 20h40" strokeWidth="3" opacity=".5" />
+  </g>,
+  klar: <g className="mark-klar" stroke="var(--art-ink)" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M150 74h220a14 14 0 0 1 14 14v84a14 14 0 0 1-14 14H226l-48 38v-38h-28a14 14 0 0 1-14-14V88a14 14 0 0 1 14-14z" fill="var(--art-paper)" strokeWidth="3" />
+    <text x="176" y="140" fill="var(--art-ink)" stroke="none" fontSize="54" style={{ fontFamily: 'var(--font-signature)' }}>Hallo</text>
+    <path d="M286 214h190a14 14 0 0 1 14 14v28a14 14 0 0 1-14 14H452l-26 26v-26h-140a14 14 0 0 1-14-14v-28a14 14 0 0 1 14-14z" fill="var(--art-accent)" strokeWidth="3" />
+    <circle cx="346" cy="242" r="5" fill="var(--art-paper)" stroke="none" className="klar-dot" /><circle cx="372" cy="242" r="5" fill="var(--art-paper)" stroke="none" className="klar-dot" /><circle cx="398" cy="242" r="5" fill="var(--art-paper)" stroke="none" className="klar-dot" />
+  </g>,
 };
 
 export function ProjectArtwork({ project, large = false }: { project: Project; large?: boolean }) {
