@@ -10,6 +10,40 @@ export function ForgeMark() {
   </svg>;
 }
 
+export function ResearchArtwork({ slug }: { slug: string }) {
+  const sketches: Record<string, ReactNode> = {
+    'designing-alive-ui': <g className="research-sketch research-sketch-alive">
+      <path d="M104 157v-45m0 45h222" fill="none" stroke="#6d6555" strokeWidth="2" />
+      <path d="M119 143c33-1 32-42 69-39s37 26 65 12 37-39 58-43" fill="none" stroke="#a65332" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="188" cy="104" r="6" fill="#a65332" /><circle cx="253" cy="116" r="6" fill="#7a8064" /><circle cx="311" cy="73" r="6" fill="#a65332" />
+      <path d="M120 173h74m-74 13h115" stroke="#81735f" strokeWidth="2" strokeLinecap="round" opacity=".6" />
+    </g>,
+    'self-narrating-neural-networks': <g className="research-sketch research-sketch-network" fill="none" stroke="#6b6559" strokeWidth="2">
+      <path d="m133 119 62-34 62 39 65-43M133 119l62 48 62-43 65 30" />
+      <circle cx="132" cy="119" r="11" fill="#e1d2b8" /><circle cx="195" cy="85" r="11" fill="#c57a50" />
+      <circle cx="257" cy="124" r="11" fill="#e1d2b8" /><circle cx="322" cy="81" r="11" fill="#e1d2b8" />
+      <circle cx="195" cy="167" r="11" fill="#e1d2b8" /><circle cx="322" cy="154" r="11" fill="#c57a50" />
+      <path d="M120 198h112m-112 13h73" strokeLinecap="round" opacity=".55" />
+    </g>,
+    'emotion-aware-ai-writing-tools': <g className="research-sketch research-sketch-writing">
+      <path d="M114 76h208M114 100h162M114 124h184M114 148h134M114 188c26-18 47-4 69-13s33-29 56-20 37 7 61-10" fill="none" stroke="#786b59" strokeWidth="2.2" strokeLinecap="round" opacity=".7" />
+      <path d="m273 158 35-47 14 11-35 47-18 7z" fill="#c9835a" stroke="#6d4e3a" strokeWidth="2" />
+      <path d="m302 119 8-11a8 8 0 0 1 12 10l-8 11" fill="#e5d6bf" stroke="#6d4e3a" strokeWidth="2" />
+      <path d="M113 208h208" stroke="#a65332" strokeWidth="2" strokeLinecap="round" opacity=".65" />
+    </g>,
+  };
+  return <svg className={`research-artwork research-artwork-${slug}`} viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+    <defs><pattern id={`paper-grain-${slug}`} width="13" height="13" patternUnits="userSpaceOnUse"><circle cx="2" cy="4" r=".7" fill="#695944" opacity=".15" /><circle cx="10" cy="9" r=".55" fill="#695944" opacity=".12" /></pattern></defs>
+    <path d="M43 37 347 27l15 182-307 12z" fill="#9c6b48" opacity=".28" transform="translate(7 8)" />
+    <path d="M42 34 346 24l15 182-307 12z" fill="#f1e7d5" stroke="#b8a58a" strokeWidth="1.5" />
+    <path d="M42 34 346 24l15 182-307 12z" fill={`url(#paper-grain-${slug})`} />
+    <path d="M78 50v141" stroke="#a65332" strokeWidth="1.5" opacity=".55" />
+    <text x="96" y="58" className="research-art-label" fill="#775843">MARGIN NOTE / {slug === 'designing-alive-ui' ? '01' : slug === 'self-narrating-neural-networks' ? '02' : '03'}</text>
+    {sketches[slug] ?? sketches['designing-alive-ui']}
+    <path d="M325 24 346 24l2 22" fill="#e0d0b7" stroke="#b8a58a" strokeWidth="1" />
+  </svg>;
+}
+
 export function HeroArtwork() {
   return <svg className="hero-sketch" viewBox="0 0 720 560" aria-hidden="true" focusable="false">
     <defs>
@@ -36,6 +70,11 @@ export function HeroArtwork() {
       <text x="303" y="392" fill="#705944" className="art-label">BUILD</text>
       <text x="407" y="392" fill="#705944" className="art-label">WRITE</text>
       <path d="M174 407h73m47 0h48m29 0h54" stroke="#705944" strokeOpacity=".46" strokeWidth="1" />
+      <g className="workbench-correction">
+        <text x="432" y="342" fill="#705944" className="correction-before">reseach</text>
+        <path className="correction-strike" d="M429 337c22 4 45-4 72-1" fill="none" stroke="#a65332" strokeWidth="2.5" strokeLinecap="round" />
+        <text x="430" y="364" fill="#a65332" className="correction-after">research</text>
+      </g>
     </g>
     <g className="workbench-pencil" transform="rotate(36 576 274)">
       <rect x="559" y="192" width="23" height="204" rx="10" fill="#c27a4d" stroke="#f2c08c" strokeWidth="2" />

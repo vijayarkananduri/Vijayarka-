@@ -4,6 +4,7 @@ export type ResearchItem = {
   kind: string;
   date: string;
   summary: string;
+  context: string;
   limitation: string;
   doi: string;
   url: string;
@@ -17,6 +18,7 @@ export const research: ResearchItem[] = [
     kind: 'Zenodo preprint',
     date: '17 Aug 2025',
     summary: 'Introduces Alive UI through MAWO, a habit-tracking case study exploring how a changing visual interface can make progress feel more visible. The paper reports a 45-day self-study and a change in habit completion from 71% to 96%.',
+    context: 'Can an interface make effort easier to notice without turning progress into pressure?',
     limitation: 'The reported percentages come from a single-person 45-day case study. Treat them as findings reported by this study, not proof that the approach will improve habit completion generally.',
     doi: '10.5281/zenodo.16889414',
     url: 'https://zenodo.org/records/16889414',
@@ -28,6 +30,7 @@ export const research: ResearchItem[] = [
     kind: 'Zenodo preprint',
     date: '10 Oct 2025',
     summary: 'Explores a system where a machine-learning model narrates parts of its training process in natural language, with an ECG-classification proof of concept.',
+    context: 'What might a model explain about its own training while the work is still happening?',
     limitation: 'The record describes a proof of concept involving two students. The authors note that this small sample is not enough for strong conclusions.',
     doi: '10.5281/zenodo.17310054',
     url: 'https://zenodo.org/records/17310054',
@@ -38,6 +41,7 @@ export const research: ResearchItem[] = [
     kind: 'Zenodo preprint',
     date: '11 Jul 2025',
     summary: 'Examines design ideas for a writing assistant centered on authorial control, unobtrusive feedback, and emotionally sensitive interaction.',
+    context: 'How can an AI writing tool offer help without taking the page or the writer’s voice away?',
     limitation: 'This is a preprint and its product observations refer to an earlier Draftbook version. Vijayarka confirms the product is working again; the historic notice on the record is not the current product status.',
     doi: '10.5281/zenodo.15865688',
     url: 'https://zenodo.org/records/15865688',

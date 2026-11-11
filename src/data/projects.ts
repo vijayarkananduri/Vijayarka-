@@ -26,8 +26,8 @@ export type Project = {
 
 const baseProjects: Project[] = [
   {
-    slug: 'mawo', title: 'MAWO', eyebrow: 'Your progress, made visible', category: 'Web & PWA', platform: 'Web · PWA · Android project', status: 'Live',
-    summary: 'A habit tracker built around progress you can feel: the interface changes as your routines grow.',
+    slug: 'mawo', title: 'MAWO', eyebrow: 'Your progress, made visible', category: 'Web & PWA', platform: 'Web app · PWA · Android app', status: 'Live',
+    summary: 'A habit tracker across web and Android, built around progress you can feel: the interface changes as your routines grow.',
     story: 'MAWO is the clearest working expression of Alive UI, Vijayarka’s idea that software can reflect a person’s effort instead of remaining visually static. The project brings habit planning and a changing visual world together.',
     features: ['Adaptive visual phases', 'Daily habits and one-time tasks', 'Progress and milestones'], palette: 'green',
     externalUrl: 'https://themawo.netlify.app/', externalLabel: 'Open MAWO', repoUrl: 'https://github.com/vijayarkananduri/theMAWO', paperUrl: 'https://zenodo.org/records/16889414', featured: true, sort: 1,
@@ -134,11 +134,11 @@ const baseProjects: Project[] = [
     externalUrl: 'https://linktr.ee/theaibay', externalLabel: 'Find the current app', sort: 15,
   },
   {
-    slug: 'sylph', title: 'Sylph', eyebrow: 'Weather with a little atmosphere', category: 'Android', platform: 'Android · Flutter', status: 'Public project',
-    summary: 'A weather and air-quality app with animated conditions and practical “leaving now” outfit suggestions.',
+    slug: 'sylph', title: 'Sylph', eyebrow: 'Weather with a little atmosphere', category: 'Web & PWA', platform: 'Web app · Android beta', status: 'Live',
+    summary: 'A weather and air-quality app ready on the web, with its Android version in beta.',
     story: 'The public repository describes weather and air-quality data, animated backgrounds, unit switching, and locally stored search history. Check live API credentials and service availability before promising current forecasts.',
     features: ['Weather and air quality', 'Atmosphere that responds to conditions', 'Outfit recommendations'], palette: 'blue',
-    repoUrl: 'https://github.com/vijayarkananduri/Sylph', externalUrl: 'https://github.com/vijayarkananduri/Sylph', externalLabel: 'Explore Sylph', sort: 16,
+    repoUrl: 'https://github.com/vijayarkananduri/Sylph', externalUrl: 'https://thesylph.netlify.app/', externalLabel: 'Open Sylph', sort: 16,
   },
 ];
 

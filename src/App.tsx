@@ -1,7 +1,7 @@
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import { projects, getProject, Project } from './data/projects';
 import { creative, profiles, research } from './data/content';
-import { CreativeArtwork, ForgeMark, HeroArtwork, IntroArtwork, ProjectArtwork } from './Artwork';
+import { CreativeArtwork, ForgeMark, HeroArtwork, IntroArtwork, ProjectArtwork, ResearchArtwork } from './Artwork';
 
 const navItems = [
   { label: 'Projects', href: '/projects/' },
@@ -316,7 +316,10 @@ function ResearchPage() {
   return <PageShell className="research">
     <div className="page-wrap"><PageIntro index="02" accent="blue" title={<>Questions worth<br /><em>staying with.</em></>} subtitle="Research in progress, ideas in public, and the honest limits of what a study can tell us." />
       <div className="research-page-intro"><span className="research-seal">R<span>·</span></span><p>These Zenodo records are preprints. Read the original record for the full paper; summaries here are a guide, not a substitute.</p></div>
-      <div className="research-list">{research.map((paper, i) => <article data-reveal className="research-item" key={paper.slug}><div className="research-item-index mono">0{i + 1}<span>—</span>{paper.date}</div><div className="research-item-content"><div className="research-tags"><span>{paper.kind}</span><span>DOI {paper.doi}</span></div><h2><a href={withBasePath(`/research/${paper.slug}/`)}>{paper.title}<span>↗</span></a></h2><p>{paper.summary}</p><div className="research-limit"><span>THE LIMITS</span><p>{paper.limitation}</p></div><a className="text-link" href={paper.url} target="_blank" rel="noreferrer">Open the Zenodo record <b>↗</b></a></div></article>)}</div>
+      <div className="research-list">{research.map((paper, i) => <article data-reveal className={`research-item research-item-${paper.slug}`} key={paper.slug}>
+        <div className="research-item-margin"><div className="research-item-index mono">0{i + 1}<span>—</span>{paper.date}</div><div className="research-art-panel"><ResearchArtwork slug={paper.slug} /><span className="research-art-caption mono">MARGIN NOTE / 0{i + 1}</span></div></div>
+        <div className="research-item-content"><div className="research-tags"><span>{paper.kind}</span><span>DOI {paper.doi}</span></div><h2><a href={withBasePath(`/research/${paper.slug}/`)}>{paper.title}<span>↗</span></a></h2><p>{paper.summary}</p><div className="research-question"><span>A QUESTION TO CARRY WITH YOU</span><p>{paper.context}</p></div><div className="research-limit"><span>THE LIMITS</span><p>{paper.limitation}</p></div><a className="text-link" href={withBasePath(`/research/${paper.slug}/`)}>Open the paper notes <b>↗</b></a></div>
+      </article>)}</div>
       <div className="research-footnote"><p className="mono">A NOTE ON THE WORD “PUBLISHED”</p><p>These works are publicly archived preprints. This site does not present them as peer-reviewed journal papers.</p></div>
     </div>
   </PageShell>;
@@ -325,8 +328,14 @@ function ResearchPage() {
 function ResearchDetail({ slug }: { slug: string }) {
   const paper = research.find((item) => item.slug === slug);
   if (!paper) return <NotFound />;
+  const relatedProject = paper.related ? getProject(paper.related) : undefined;
   return <PageShell className="research">
-    <div className="page-wrap"><a className="back-link mono" href={withBasePath("/research/")}>← ALL RESEARCH</a><article className="research-detail"><p className="eyebrow mono">PREPRINT <span>/</span> {paper.date}</p><h1>{paper.title}</h1><p className="research-detail-lede">{paper.summary}</p><a className="button button-research" href={paper.url} target="_blank" rel="noreferrer">Read the Zenodo record <span>↗</span></a><section className="detail-note research-limit-large"><p className="mono">LIMITATIONS & CONTEXT</p><p>{paper.limitation}</p></section><div className="doi-box"><span className="mono">DOI</span><code>{paper.doi}</code><a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noreferrer">Resolve DOI ↗</a></div></article></div>
+    <div className="page-wrap"><a className="back-link mono" href={withBasePath("/research/")}>← ALL RESEARCH</a><article className="research-detail">
+      <header className="research-detail-head"><div><p className="eyebrow mono">PREPRINT <span>/</span> {paper.date}</p><h1>{paper.title}</h1><p className="research-detail-lede">{paper.summary}</p><a className="button button-research" href={paper.url} target="_blank" rel="noreferrer">Read the Zenodo record <span>↗</span></a></div><div className="research-detail-art"><ResearchArtwork slug={paper.slug} /></div></header>
+      <section className="research-question research-question-detail"><span className="mono">A QUESTION TO CARRY INTO THE PAPER</span><p>{paper.context}</p></section>
+      <section className="detail-note research-limit-large"><p className="mono">LIMITATIONS & CONTEXT</p><p>{paper.limitation}</p></section>
+      <div className="doi-box"><span className="mono">DOI</span><code>{paper.doi}</code><a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noreferrer">Resolve DOI ↗</a>{relatedProject && <a className="research-related-link" href={withBasePath(`/projects/${relatedProject.slug}/`)}>Explore {relatedProject.title} ↗</a>}</div>
+    </article></div>
   </PageShell>;
 }
 
