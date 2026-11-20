@@ -24,9 +24,9 @@
   --tone-plum: #765a58;
   --tone-dark: #49443d;
   --tone-coral: #a85036;
-  --font-display: 'Space Grotesk Variable', 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Syne Variable', Syne, system-ui, sans-serif;
   --font-body: 'Manrope Variable', Manrope, system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-mono: 'DM Mono', ui-monospace, monospace;
   --font-signature: 'Caveat Variable', Caveat, cursive;
   --radius-card: 7px;
   --shadow-soft: 0 20px 52px rgba(25, 23, 20, .12);

@@ -306,7 +306,7 @@ body.motion-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0
   .hero-surname { margin: 14px 0 0 12px; font-size: clamp(43px,9vw,68px); letter-spacing: .04em; }
   .hero-tagline { margin-top: 24px; font-size: 19px; }
   .hero-description { max-width: 350px; font-size: 11px; }
-  .hero-visual { width: 470px; right: -200px; top: 67%; opacity: .29; }
+  .hero-visual { width: 370px; right: -250px; top: 92%; opacity: .15; }
   .hero-caption { left: 23px; right: 23px; bottom: 20px; font-size: 7px; }
   .hero-actions .button { min-height: 44px; padding-inline: 13px; font-size: 9px; }
   .intro-strip { grid-template-columns: 42px minmax(0,1fr) 36px; gap: 13px; }
@@ -379,3 +379,59 @@ body.motion-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0
 
 .home-hero .hero-content h1 .hero-signature { color: #f4eddf; }
 .home-hero .hero-content h1 .hero-surname { color: #c87449; }
+
+/* Compact catalogue proportions, with the authored art still doing the talking. */
+.visual-tile { height: 200px; min-height: 200px; }
+.project-card-body { padding: 15px 16px 16px; }
+.card-eyebrow { margin: 12px 0 3px; }
+.card-summary { margin: 8px 0 13px; }
+.home-project-grid .visual-tile, .home-project-grid .project-featured .visual-large { height: 216px; min-height: 216px; }
+.project-art { transition: transform .55s var(--ease-cinematic), filter .45s; }
+.project-card-link:hover .project-art { transform: scale(1.018); }
+.project-art-mark { transform-origin: 50% 50%; }
+
+/* The SVG fallback remains visible until the low-power Three.js scene is ready. */
+.hero-sculpture { position: relative; width: 100%; aspect-ratio: 720 / 560; }
+.hero-sculpture .hero-sketch { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity .65s var(--ease-cinematic); }
+.hero-sculpture-canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; opacity: 0; transition: opacity .8s var(--ease-cinematic); }
+.hero-sculpture.is-ready .hero-sketch { opacity: 0; }
+.hero-sculpture.is-ready .hero-sculpture-canvas { opacity: .94; }
+
+/* A two-page broadsheet, opened by the existing reveal observer. */
+.creative-art { perspective: 1400px; }
+.broadsheet { position: relative; display: grid; grid-template-columns: 1fr 1fr; width: min(100%, 470px); aspect-ratio: 1.15 / 1; transform: rotate(-2deg); filter: drop-shadow(0 22px 28px rgba(50,36,24,.15)); }
+.broadsheet-page { position: relative; display: flex; min-width: 0; flex-direction: column; padding: clamp(18px, 3vw, 30px); overflow: hidden; border: 1px solid #d8cbb6; background: linear-gradient(145deg,#fbf6eb,#eee4d2); color: #2c2924; }
+.broadsheet-left { border-right: 0; }
+.broadsheet-right { transform: perspective(1400px) rotateY(-42deg); transform-origin: left center; box-shadow: inset 10px 0 20px rgba(65,48,32,.08); transition: transform 1.15s var(--ease-cinematic), box-shadow 1.15s var(--ease-cinematic); }
+.home-creative.is-visible .broadsheet-right, body:not(.motion-ready) .broadsheet-right { transform: perspective(1400px) rotateY(0); box-shadow: inset 3px 0 9px rgba(65,48,32,.04); }
+.broadsheet-kicker, .broadsheet-colophon, .broadsheet-page-no { color: #806d57; font: 500 7px/1.5 var(--font-mono); letter-spacing: .1em; }
+.broadsheet-rule { width: 100%; height: 1px; margin: 10px 0 18px; background: #a65332; }
+.broadsheet-title { margin: auto 0; color: #302a24; font: 600 clamp(21px,3.15vw,38px)/.95 var(--font-display); letter-spacing: -.075em; }
+.broadsheet-title em { color: #98502f; font: 600 1.16em var(--font-signature); letter-spacing: -.02em; }
+.broadsheet-colophon { padding-top: 12px; border-top: 1px solid rgba(88,73,54,.23); font-size: 6px; }
+.broadsheet-colophon i, .broadsheet-page-no i { color: #a65332; font-style: normal; }
+.broadsheet-illustration { position: relative; display: block; width: 100%; aspect-ratio: 1.3; margin: auto 0 17px; overflow: hidden; background: linear-gradient(145deg,#d8cbb4,#e9dec9); }
+.broadsheet-illustration::before, .broadsheet-illustration::after { content: ''; position: absolute; border: 1px solid rgba(86,72,53,.35); border-radius: 50%; }
+.broadsheet-illustration::before { inset: 17% 23%; transform: rotate(-24deg) scaleX(1.4); }
+.broadsheet-illustration::after { inset: 8% 37%; transform: rotate(36deg) scaleX(1.2); }
+.broadsheet-illustration i { position: absolute; left: 47%; top: 22%; width: 14%; aspect-ratio: 1; border-radius: 50%; background: #a65332; box-shadow: 0 0 0 8px rgba(166,83,50,.12),0 0 0 18px rgba(166,83,50,.07); }
+.broadsheet-illustration b { position: absolute; left: 50%; top: 34%; width: 1px; height: 48%; background: #665846; transform: rotate(24deg); }
+.broadsheet-illustration span { position: absolute; left: 22%; right: 22%; bottom: 22%; height: 1px; background: #665846; transform: rotate(-8deg); }
+.broadsheet-deck { max-width: 28ch; color: #51483c; font: 500 11px/1.55 var(--font-body); }
+.broadsheet-page-no { margin-top: auto; padding-top: 16px; text-align: right; }
+.broadsheet-spine { position: absolute; z-index: 2; top: 1px; bottom: 1px; left: 50%; width: 1px; background: rgba(85,67,46,.22); pointer-events: none; }
+.broadsheet-shadow { position: absolute; z-index: -1; left: 5%; right: 5%; bottom: -9px; height: 11px; background: rgba(82,56,37,.11); filter: blur(7px); }
+
+@media (max-width: 720px) {
+  .visual-tile, .project-featured .visual-large { height: 198px; min-height: 198px; }
+  .home-project-grid .visual-tile, .home-project-grid .project-featured .visual-large { height: 198px; min-height: 198px; }
+  .project-card-body { padding: 14px 15px 15px; }
+  .broadsheet { width: min(100%, 370px); }
+  .broadsheet-kicker, .broadsheet-colophon, .broadsheet-page-no { font-size: 6px; }
+  .broadsheet-deck { font-size: 9px; }
+  .hero-sculpture { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-sculpture .hero-sketch, .hero-sculpture-canvas, .broadsheet-right { transition: none; }
+  .broadsheet-right { transform: none; }
+}

@@ -2,35 +2,35 @@
   "routes": [
     {
       "path": "/",
-      "title": "Vijayarka Nanduri — Online Studio"
+      "title": "Vijayarka Nanduri \u2014 Online Studio"
     },
     {
       "path": "/projects/",
-      "title": "Projects — Vijayarka Nanduri"
+      "title": "Projects \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/mawo/",
-      "title": "Mawo — Vijayarka Nanduri"
+      "title": "Mawo \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/khata/",
-      "title": "Khata — Vijayarka Nanduri"
+      "title": "Khata \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/metabasis/",
-      "title": "Metabasis — Vijayarka Nanduri"
+      "title": "Metabasis \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/almara/",
-      "title": "Almara — Vijayarka Nanduri"
+      "title": "Almara \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/examflow/",
-      "title": "Examflow — Vijayarka Nanduri"
+      "title": "Examflow \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/centrum-os/",
-      "title": "Centrum-Os — Vijayarka Nanduri"
+      "title": "Centrum-Os \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/draftbook/",
@@ -42,83 +42,83 @@
     },
     {
       "path": "/projects/tenet/",
-      "title": "Tenet — Vijayarka Nanduri"
+      "title": "Tenet \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/designrx/",
-      "title": "Designrx — Vijayarka Nanduri"
+      "title": "Designrx \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/echo/",
-      "title": "Echo — Vijayarka Nanduri"
+      "title": "Echo \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/ek-indian-bacha/",
-      "title": "Ek-Indian-Bacha — Vijayarka Nanduri"
+      "title": "Ek-Indian-Bacha \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/logbook/",
-      "title": "Logbook — Vijayarka Nanduri"
+      "title": "Logbook \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/writers-assistant/",
-      "title": "Writers-Assistant — Vijayarka Nanduri"
+      "title": "Writers-Assistant \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/tailored-poems/",
-      "title": "Tailored-Poems — Vijayarka Nanduri"
+      "title": "Tailored-Poems \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/sylph/",
-      "title": "Sylph — Vijayarka Nanduri"
+      "title": "Sylph \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/research/",
-      "title": "Research — Vijayarka Nanduri"
+      "title": "Research \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/research/designing-alive-ui/",
-      "title": "Designing Alive Ui — Vijayarka Nanduri"
+      "title": "Designing Alive Ui \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/research/self-narrating-neural-networks/",
-      "title": "Self Narrating Neural Networks — Vijayarka Nanduri"
+      "title": "Self Narrating Neural Networks \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/research/emotion-aware-ai-writing-tools/",
-      "title": "Emotion Aware Ai Writing Tools — Vijayarka Nanduri"
+      "title": "Emotion Aware Ai Writing Tools \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/creative/",
-      "title": "Creative — Vijayarka Nanduri"
+      "title": "Creative \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/about/",
-      "title": "About — Vijayarka Nanduri"
+      "title": "About \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/contact/",
-      "title": "Contact — Vijayarka Nanduri"
+      "title": "Contact \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/kosha/",
-      "title": "KOSHA — Vijayarka Nanduri"
+      "title": "KOSHA \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/nslv-19/",
-      "title": "NSLV-19 — Vijayarka Nanduri"
+      "title": "NSLV-19 \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/flexrun/",
-      "title": "FlexRun — Vijayarka Nanduri"
+      "title": "FlexRun \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/epochs/",
-      "title": "Epochs — Vijayarka Nanduri"
+      "title": "Epochs \u2014 Vijayarka Nanduri"
     },
     {
       "path": "/projects/klar/",
-      "title": "Klar — Vijayarka Nanduri"
+      "title": "Klar \u2014 Vijayarka Nanduri"
     }
   ]
 }

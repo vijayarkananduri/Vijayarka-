@@ -10,83 +10,37 @@ export function ForgeMark() {
   </svg>;
 }
 
-export function ResearchArtwork({ slug }: { slug: string }) {
-  const sketches: Record<string, ReactNode> = {
-    'designing-alive-ui': <g className="research-sketch research-sketch-alive">
-      <path d="M104 157v-45m0 45h222" fill="none" stroke="#6d6555" strokeWidth="2" />
-      <path d="M119 143c33-1 32-42 69-39s37 26 65 12 37-39 58-43" fill="none" stroke="#a65332" strokeWidth="4" strokeLinecap="round" />
-      <circle cx="188" cy="104" r="6" fill="#a65332" /><circle cx="253" cy="116" r="6" fill="#7a8064" /><circle cx="311" cy="73" r="6" fill="#a65332" />
-      <path d="M120 173h74m-74 13h115" stroke="#81735f" strokeWidth="2" strokeLinecap="round" opacity=".6" />
-    </g>,
-    'self-narrating-neural-networks': <g className="research-sketch research-sketch-network" fill="none" stroke="#6b6559" strokeWidth="2">
-      <path d="m133 119 62-34 62 39 65-43M133 119l62 48 62-43 65 30" />
-      <circle cx="132" cy="119" r="11" fill="#e1d2b8" /><circle cx="195" cy="85" r="11" fill="#c57a50" />
-      <circle cx="257" cy="124" r="11" fill="#e1d2b8" /><circle cx="322" cy="81" r="11" fill="#e1d2b8" />
-      <circle cx="195" cy="167" r="11" fill="#e1d2b8" /><circle cx="322" cy="154" r="11" fill="#c57a50" />
-      <path d="M120 198h112m-112 13h73" strokeLinecap="round" opacity=".55" />
-    </g>,
-    'emotion-aware-ai-writing-tools': <g className="research-sketch research-sketch-writing">
-      <path d="M114 76h208M114 100h162M114 124h184M114 148h134M114 188c26-18 47-4 69-13s33-29 56-20 37 7 61-10" fill="none" stroke="#786b59" strokeWidth="2.2" strokeLinecap="round" opacity=".7" />
-      <path d="m273 158 35-47 14 11-35 47-18 7z" fill="#c9835a" stroke="#6d4e3a" strokeWidth="2" />
-      <path d="m302 119 8-11a8 8 0 0 1 12 10l-8 11" fill="#e5d6bf" stroke="#6d4e3a" strokeWidth="2" />
-      <path d="M113 208h208" stroke="#a65332" strokeWidth="2" strokeLinecap="round" opacity=".65" />
-    </g>,
-  };
-  return <svg className={`research-artwork research-artwork-${slug}`} viewBox="0 0 400 250" aria-hidden="true" focusable="false">
-    <defs><pattern id={`paper-grain-${slug}`} width="13" height="13" patternUnits="userSpaceOnUse"><circle cx="2" cy="4" r=".7" fill="#695944" opacity=".15" /><circle cx="10" cy="9" r=".55" fill="#695944" opacity=".12" /></pattern></defs>
-    <path d="M43 37 347 27l15 182-307 12z" fill="#9c6b48" opacity=".28" transform="translate(7 8)" />
-    <path d="M42 34 346 24l15 182-307 12z" fill="#f1e7d5" stroke="#b8a58a" strokeWidth="1.5" />
-    <path d="M42 34 346 24l15 182-307 12z" fill={`url(#paper-grain-${slug})`} />
-    <path d="M78 50v141" stroke="#a65332" strokeWidth="1.5" opacity=".55" />
-    <text x="96" y="58" className="research-art-label" fill="#775843">MARGIN NOTE / {slug === 'designing-alive-ui' ? '01' : slug === 'self-narrating-neural-networks' ? '02' : '03'}</text>
-    {sketches[slug] ?? sketches['designing-alive-ui']}
-    <path d="M325 24 346 24l2 22" fill="#e0d0b7" stroke="#b8a58a" strokeWidth="1" />
-  </svg>;
-}
-
 export function HeroArtwork() {
   return <svg className="hero-sketch" viewBox="0 0 720 560" aria-hidden="true" focusable="false">
     <defs>
-      <linearGradient id="workbench-paper" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#f4ead6" /><stop offset="1" stopColor="#d9c8aa" /></linearGradient>
-      <filter id="workbench-shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="20" stdDeviation="18" floodColor="#080807" floodOpacity=".52" /></filter>
-      <pattern id="workbench-lines" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M0 13.5H14" stroke="#6f6252" strokeOpacity=".13" strokeWidth=".7" /></pattern>
+      <linearGradient id="workbench-paper" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#f2e8d5" /><stop offset=".58" stopColor="#e6d8c0" /><stop offset="1" stopColor="#d8c7aa" /></linearGradient>
+      <linearGradient id="workbench-edge" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#fffaf0" stopOpacity=".72" /><stop offset="1" stopColor="#b6a184" stopOpacity=".12" /></linearGradient>
+      <filter id="workbench-shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="22" stdDeviation="19" floodColor="#080807" floodOpacity=".42" /></filter>
     </defs>
+    <ellipse cx="367" cy="315" rx="246" ry="171" fill="#a65332" opacity=".09" />
     <g className="workbench-sheet" filter="url(#workbench-shadow)">
-      <path d="m131 99 354-27 83 52 25 304-349 42-96-63z" fill="#8d4c31" opacity=".7" transform="translate(18 18) rotate(-5 355 275)" />
-      <path d="m126 85 354-27 83 52 25 304-349 42-96-63z" fill="url(#workbench-paper)" stroke="#f6eddb" strokeWidth="2" transform="rotate(-5 355 275)" />
-      <path d="m126 85 354-27 83 52 25 304-349 42-96-63z" fill="url(#workbench-lines)" opacity=".72" transform="rotate(-5 355 275)" />
-      <path d="m477 58 6 69 80-17" fill="#bca98c" stroke="#6b5747" strokeOpacity=".55" strokeWidth="1.5" transform="rotate(-5 355 275)" />
-      <path d="m477 58 6 69 80-17" fill="none" stroke="#f9f2e3" strokeWidth="2" transform="rotate(-5 355 275)" />
+      <path d="m134 105 353-31 82 54 23 292-340 39-100-68z" fill="url(#workbench-paper)" stroke="#f7efdf" strokeWidth="1.5" transform="rotate(-5 355 275)" />
+      <path d="m134 105 353-31 82 54 23 292-340 39-100-68z" fill="none" stroke="url(#workbench-edge)" strokeWidth="8" transform="rotate(-5 355 275)" />
+      <path d="m487 74 5 54 77-14" fill="#d3c2a7" stroke="#98856b" strokeOpacity=".44" strokeWidth="1.2" transform="rotate(-5 355 275)" />
+      <path d="m487 74 5 54 77-14" fill="none" stroke="#fff8e9" strokeOpacity=".82" strokeWidth="1.5" transform="rotate(-5 355 275)" />
     </g>
     <g className="workbench-ink" transform="rotate(-5 355 275)">
-      <text x="174" y="145" fill="#705944" className="art-label">FIELD NOTES / 01</text>
-      <path d="M174 165h152" stroke="#a65332" strokeWidth="3" strokeLinecap="round" />
-      <text x="174" y="205" fill="#29231d" className="art-title">An idea,</text>
-      <text x="174" y="245" fill="#29231d" className="art-title">given a form.</text>
-      <path d="M176 283c34-9 50 10 76 2s43-25 71-9 43 17 65 0 38-12 56 2" fill="none" stroke="#a65332" strokeWidth="3" strokeLinecap="round" className="ink-drawn-path" />
-      <path d="M177 313c39-8 67 4 93 0m-93 18c34-7 51 4 80 0m-80 18c24-4 41 1 58-2" fill="none" stroke="#635746" strokeOpacity=".58" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="179" cy="285" r="5" fill="#a65332" /><circle cx="444" cy="278" r="5" fill="#a65332" />
-      <text x="176" y="392" fill="#705944" className="art-label">RESEARCH</text>
-      <text x="303" y="392" fill="#705944" className="art-label">BUILD</text>
-      <text x="407" y="392" fill="#705944" className="art-label">WRITE</text>
-      <path d="M174 407h73m47 0h48m29 0h54" stroke="#705944" strokeOpacity=".46" strokeWidth="1" />
-      <g className="workbench-correction">
-        <text x="432" y="342" fill="#705944" className="correction-before">reseach</text>
-        <path className="correction-strike" d="M429 337c22 4 45-4 72-1" fill="none" stroke="#a65332" strokeWidth="2.5" strokeLinecap="round" />
-        <text x="430" y="364" fill="#a65332" className="correction-after">research</text>
-      </g>
+      <text x="174" y="148" fill="#806d57" className="art-label">A SMALL STUDIO / 01</text>
+      <path d="M174 166h114" stroke="#a65332" strokeWidth="2" strokeLinecap="round" />
+      <text x="174" y="214" fill="#302a24" className="art-title">An idea,</text>
+      <text x="174" y="256" fill="#302a24" className="art-title">given a form.</text>
+      <path d="M176 293c34-9 50 10 76 2s43-25 71-9 43 17 65 0 38-12 56 2" fill="none" stroke="#a65332" strokeWidth="2.5" strokeLinecap="round" className="ink-drawn-path" />
+      <path d="M177 325h116m-116 17h87m-87 17h65" fill="none" stroke="#756650" strokeOpacity=".43" strokeWidth="1.3" strokeLinecap="round" />
+      <circle cx="179" cy="295" r="3.5" fill="#a65332" /><circle cx="444" cy="288" r="3.5" fill="#a65332" />
+      <text x="176" y="399" fill="#806d57" className="art-label">RESEARCH</text>
+      <text x="303" y="399" fill="#806d57" className="art-label">BUILD</text>
+      <text x="407" y="399" fill="#806d57" className="art-label">WRITE</text>
+      <path d="M174 414h73m47 0h48m29 0h54" stroke="#806d57" strokeOpacity=".35" strokeWidth="1" />
     </g>
-    <g className="workbench-pencil" transform="rotate(36 576 274)">
-      <rect x="559" y="192" width="23" height="204" rx="10" fill="#c27a4d" stroke="#f2c08c" strokeWidth="2" />
-      <path d="M559 212h23M559 373h23" stroke="#f0d6ae" strokeWidth="4" />
-      <path d="m559 396 11 30 12-30" fill="#d9c8aa" stroke="#f0d6ae" strokeWidth="2" />
-      <path d="m568 426 2 9 3-9" fill="#171514" />
-    </g>
-    <g className="workbench-tape" transform="rotate(-12 190 92)">
-      <path d="M145 75h104v27H145z" fill="#c57847" opacity=".76" />
-      <path d="M150 80h96" stroke="#f0c69e" strokeOpacity=".65" strokeWidth="1" strokeDasharray="3 5" />
-    </g>
-    <text x="94" y="508" fill="#d4c5ad" className="art-caption">A SMALL STUDIO FOR BIG QUESTIONS</text>
+    <ellipse cx="453" cy="197" rx="112" ry="51" fill="none" stroke="#bd906b" strokeOpacity=".8" strokeWidth="1.2" transform="rotate(-28 453 197)" />
+    <ellipse cx="453" cy="197" rx="88" ry="39" fill="none" stroke="#bd906b" strokeOpacity=".38" strokeWidth="1" transform="rotate(31 453 197)" />
+    <circle cx="547" cy="144" r="4" fill="#c47a4d" />
+    <text x="94" y="508" fill="#c8b9a2" className="art-caption">RESEARCH / BUILD / WRITE</text>
   </svg>;
 }
 
@@ -147,6 +101,18 @@ const projectMarks: Record<string, ReactNode> = {
     <path d="m427 55 20-15 76 158-20 12z" fill="var(--art-accent)" strokeWidth="3" />
     <path d="m503 210 12-12 12 25-20 10z" fill="var(--art-paper)" strokeWidth="2" />
     <path d="M207 211c32-14 53-4 79-12" fill="none" stroke="var(--art-accent)" strokeWidth="4" />
+  </g>,
+  draftsync: <g className="mark-draftsync" stroke="var(--art-ink)" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M154 231h332m-313 0v-121m294 121V110" fill="none" strokeWidth="5" />
+    <path d="M166 110h294v13H166z" fill="var(--art-paper)" strokeWidth="2" />
+    <path d="M185 207V133h48v74z" fill="var(--art-accent)" strokeWidth="3" />
+    <path d="M242 207V146h43v61z" fill="var(--art-paper)" strokeWidth="3" />
+    <path d="M294 207V126h59v81z" fill="#d8b98e" strokeWidth="3" />
+    <path d="M362 207V141h39v66z" fill="var(--art-paper)" strokeWidth="3" />
+    <path d="M410 207V119h36v88z" fill="var(--art-accent)" strokeWidth="3" />
+    <path d="M196 149h25m-25 10h25m32 0h23m-23 10h23m-10-25v57m62-69h29m-29 11h29m19 21h19m-19 10h19m-1-74h20" fill="none" stroke="var(--art-ink)" strokeWidth="2" opacity=".58" />
+    <path d="M244 91h147" stroke="var(--art-accent)" strokeWidth="3" />
+    <text x="245" y="78" className="art-small" fill="var(--art-accent)" stroke="none">YOUR SHELF / PICK UP WHEN READY</text>
   </g>,
   tenet: <g className="mark-tenet" stroke="var(--art-ink)" strokeLinecap="round" strokeLinejoin="round">
     <path d="M191 67h237l30 31v184H191z" fill="var(--art-paper)" strokeWidth="3" />
@@ -215,52 +181,25 @@ const projectMarks: Record<string, ReactNode> = {
     <path d="M164 127c29-23 61-29 94-27m130 8c34 8 62 22 86 44" fill="none" stroke="var(--art-accent)" strokeWidth="3" />
     <path d="M192 92v31m-12-19h24m204 29v30m-12-18h24" strokeWidth="2" opacity=".5" />
   </g>,
-  kosha: <g className="mark-kosha" stroke="var(--art-ink)" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="236" y="62" width="170" height="210" rx="10" fill="var(--art-paper)" strokeWidth="3" transform="rotate(-9 321 167)" opacity=".55" />
-    <rect x="236" y="62" width="170" height="210" rx="10" fill="var(--art-paper)" strokeWidth="3" transform="rotate(7 321 167)" opacity=".8" />
-    <rect x="236" y="62" width="170" height="210" rx="10" fill="var(--art-paper)" strokeWidth="3" />
-    <path d="M262 108h72m-72 22h118m-118 22h96" strokeWidth="3" opacity=".6" />
-    <rect x="292" y="190" width="58" height="46" rx="6" fill="var(--art-accent)" strokeWidth="3" /><path d="M303 190v-14a18 18 0 0 1 36 0v14" fill="none" strokeWidth="4" /><circle cx="321" cy="212" r="5" fill="var(--art-paper)" stroke="none" />
-  </g>,
-  'nslv-19': <g className="mark-nslv" stroke="var(--art-ink)" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M60 262c120-24 240-24 520 0" fill="none" strokeWidth="3" opacity=".5" />
-    <ellipse cx="320" cy="108" rx="62" ry="74" fill="var(--art-paper)" strokeWidth="3" /><path d="M320 34v148M262 90c40 14 76 14 116 0" fill="none" strokeWidth="2" opacity=".45" />
-    <path d="M308 182l-12 34m36-34 12 34M296 216h48" fill="none" strokeWidth="3" /><rect x="296" y="216" width="48" height="32" rx="3" fill="var(--art-accent)" strokeWidth="3" />
-    <path d="M470 80h40m-40 52h40m-40 52h40" strokeWidth="2" opacity=".5" /><circle cx="150" cy="86" r="5" fill="var(--art-accent)" stroke="none" /><path d="M118 60h64" strokeWidth="2" strokeDasharray="3 7" opacity=".5" />
-  </g>,
-  flexrun: <g className="mark-flexrun" stroke="var(--art-ink)" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M110 262H530" fill="none" strokeWidth="3" opacity=".5" />
-    <circle cx="320" cy="92" r="20" fill="var(--art-paper)" strokeWidth="4" />
-    <path d="M320 112v70m0-58-52 28m52-28 58-30m-58 88-44 62m44-62 52 54" fill="none" strokeWidth="5" />
-    {[[320,124],[268,152],[378,94],[276,244],[372,236]].map(([x,y]) => <circle key={x+'-'+y} cx={x} cy={y} r="7" fill="var(--art-accent)" stroke="var(--art-ink)" strokeWidth="2" className="flex-joint" />)}
-    <path d="M150 140c-20 20-20 60 0 80m-30-110c-34 36-34 106 0 142" fill="none" strokeWidth="3" opacity=".45" />
-  </g>,
-  epochs: <g className="mark-epochs" stroke="var(--art-ink)" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="150" y="64" width="340" height="204" rx="5" fill="var(--art-paper)" strokeWidth="3" />
-    <path d="M186 98v140h272" fill="none" strokeWidth="3" /><path d="M200 112c40 6 54 78 96 98s90 24 150 26" fill="none" stroke="var(--art-accent)" strokeWidth="4" />
-    <circle cx="256" cy="176" r="7" fill="var(--art-accent)" stroke="none" /><circle cx="338" cy="222" r="7" fill="var(--art-accent)" stroke="none" />
-    <path d="M214 258h40m26 0h26" strokeWidth="2" opacity=".4" /><path d="M376 120h58m-58 20h40" strokeWidth="3" opacity=".5" />
-  </g>,
-  klar: <g className="mark-klar" stroke="var(--art-ink)" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M150 74h220a14 14 0 0 1 14 14v84a14 14 0 0 1-14 14H226l-48 38v-38h-28a14 14 0 0 1-14-14V88a14 14 0 0 1 14-14z" fill="var(--art-paper)" strokeWidth="3" />
-    <text x="176" y="140" fill="var(--art-ink)" stroke="none" fontSize="54" style={{ fontFamily: 'var(--font-signature)' }}>Hallo</text>
-    <path d="M286 214h190a14 14 0 0 1 14 14v28a14 14 0 0 1-14 14H452l-26 26v-26h-140a14 14 0 0 1-14-14v-28a14 14 0 0 1 14-14z" fill="var(--art-accent)" strokeWidth="3" />
-    <circle cx="346" cy="242" r="5" fill="var(--art-paper)" stroke="none" className="klar-dot" /><circle cx="372" cy="242" r="5" fill="var(--art-paper)" stroke="none" className="klar-dot" /><circle cx="398" cy="242" r="5" fill="var(--art-paper)" stroke="none" className="klar-dot" />
-  </g>,
 };
 
 export function ProjectArtwork({ project, large = false }: { project: Project; large?: boolean }) {
   return <svg className={`project-art art-${project.slug}`} viewBox="0 0 640 320" preserveAspectRatio={large ? 'xMidYMid meet' : 'xMidYMid slice'} aria-hidden="true" focusable="false">
     <defs>
+      <linearGradient id={`art-ground-${project.slug}`} x1="0" y1="0" x2="1" y2="1"><stop stopColor="var(--art-bg)" /><stop offset="1" stopColor="var(--art-shade)" /></linearGradient>
+      <linearGradient id={`art-wash-${project.slug}`} x1="0" y1="0" x2="1" y2="1"><stop stopColor="#fff" stopOpacity=".18" /><stop offset=".58" stopColor="#fff" stopOpacity="0" /><stop offset="1" stopColor="#171512" stopOpacity=".12" /></linearGradient>
+      <filter id={`art-depth-${project.slug}`} x="-20%" y="-25%" width="140%" height="155%"><feDropShadow dx="0" dy="7" stdDeviation="7" floodColor="#15120f" floodOpacity=".2" /></filter>
       <pattern id={`grain-${project.slug}`} width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="3" cy="5" r=".7" fill="var(--art-ink)" opacity=".13" /><circle cx="13" cy="12" r=".55" fill="var(--art-ink)" opacity=".1" /></pattern>
       <pattern id={`paper-lines-${project.slug}`} width="10" height="10" patternUnits="userSpaceOnUse"><path d="M0 9.5H10" stroke="var(--art-ink)" strokeOpacity=".13" strokeWidth=".6" /></pattern>
     </defs>
-    <rect width="640" height="320" rx="4" fill="var(--art-bg)" />
-    <path d="M0 256c102-44 162 13 254-4s180-68 386-3v71H0z" fill="var(--art-shade)" opacity=".42" />
-    <rect width="640" height="320" fill={`url(#grain-${project.slug})`} opacity=".48" />
-    <path d="M30 36h45m-45 7h24M548 269h62" stroke="var(--art-ink)" strokeOpacity=".32" strokeWidth="1" />
-    <g className="project-art-mark">{projectMarks[project.slug] ?? <g stroke="var(--art-ink)" fill="none" strokeLinecap="round" strokeWidth="3"><path d="M181 75h278v195H181z" fill="var(--art-paper)" /><path d="M215 118h194m-194 27h157m-157 27h102" /><path d="m250 226 45-38 42 24 56-53" stroke="var(--art-accent)" strokeWidth="5" /><circle cx="393" cy="159" r="7" fill="var(--art-accent)" /></g>}</g>
-    {project.slug !== 'nslv-19' && <text x="32" y="292" fill="var(--art-ink)" className="art-label">{String(project.sort).padStart(2, '0')} / {project.category.toUpperCase()}</text>}
+    <rect width="640" height="320" fill={`url(#art-ground-${project.slug})`} />
+    <path d="M0 256c102-44 162 13 254-4s180-68 386-3v71H0z" fill="var(--art-shade)" opacity=".34" />
+    <rect width="640" height="320" fill={`url(#art-wash-${project.slug})`} />
+    <rect width="640" height="320" fill={`url(#grain-${project.slug})`} opacity=".4" />
+    <path d="M23 22h594v276H23z" fill="none" stroke="var(--art-paper)" strokeOpacity=".2" />
+    <path d="M32 36h45m-45 7h24M548 269h62" stroke="var(--art-ink)" strokeOpacity=".32" strokeWidth="1" />
+    <g className="project-art-mark" filter={`url(#art-depth-${project.slug})`}>{projectMarks[project.slug] ?? <g stroke="var(--art-ink)" fill="none" strokeLinecap="round" strokeWidth="3"><path d="M181 75h278v195H181z" fill="var(--art-paper)" /><path d="M215 118h194m-194 27h157m-157 27h102" /><path d="m250 226 45-38 42 24 56-53" stroke="var(--art-accent)" strokeWidth="5" /><circle cx="393" cy="159" r="7" fill="var(--art-accent)" /></g>}</g>
+    <text x="32" y="292" fill="var(--art-ink)" className="art-label">{String(project.sort).padStart(2, '0')} / {project.category.toUpperCase()}</text>
     <path d="M32 51v24m0-24h24m552 194v24m0-24h-24" fill="none" stroke="var(--art-accent)" strokeWidth="2" />
   </svg>;
 }

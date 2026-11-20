@@ -26,8 +26,8 @@ export type Project = {
 
 const baseProjects: Project[] = [
   {
-    slug: 'mawo', title: 'MAWO', eyebrow: 'Your progress, made visible', category: 'Web & PWA', platform: 'Web app · PWA · Android app', status: 'Live',
-    summary: 'A habit tracker across web and Android, built around progress you can feel: the interface changes as your routines grow.',
+    slug: 'mawo', title: 'MAWO', eyebrow: 'Your progress, made visible', category: 'Web & PWA', platform: 'Web · PWA · Android project', status: 'Live',
+    summary: 'A habit tracker built around progress you can feel: the interface changes as your routines grow.',
     story: 'MAWO is the clearest working expression of Alive UI, Vijayarka’s idea that software can reflect a person’s effort instead of remaining visually static. The project brings habit planning and a changing visual world together.',
     features: ['Adaptive visual phases', 'Daily habits and one-time tasks', 'Progress and milestones'], palette: 'green',
     externalUrl: 'https://themawo.netlify.app/', externalLabel: 'Open MAWO', repoUrl: 'https://github.com/vijayarkananduri/theMAWO', paperUrl: 'https://zenodo.org/records/16889414', featured: true, sort: 1,
@@ -78,11 +78,11 @@ const baseProjects: Project[] = [
     externalUrl: 'https://draftb00k.netlify.app/', externalLabel: 'Open Draftbook', paperUrl: 'https://zenodo.org/records/15865688', featured: true, sort: 8,
   },
   {
-    slug: 'draftsync', title: 'Draftsync', eyebrow: 'Your writing, on your own shelf', category: 'Web & PWA', platform: 'Web app · writing', status: 'Live',
-    summary: 'A writer’s cockpit where every book has a place on your shelf, and you choose what to open.',
-    story: 'Draftsync gives each book its own place on a shelf. No draft opens by default; you choose what to pick up.',
-    features: ['A shelf for your books', 'Choose which draft to open', 'A focused writing cockpit'], palette: 'amber',
-    externalUrl: 'https://draftsync.netlify.app/', externalLabel: 'Open Draftsync', sort: 8.5,
+    slug: 'draftsync', title: 'Draftsync', eyebrow: 'A shelf for stories still in progress', category: 'Web & PWA', platform: 'Web app · writing workspace', status: 'Live',
+    summary: 'An uncluttered writing shelf where books stay put until you choose one to open.',
+    story: 'Draftsync gives each book its own place on a shelf. Nothing opens by default; you choose what to pick up and when.',
+    features: ['A shelf for separate books', 'Choose a book before opening its drafts', 'A guided first-use flow'], palette: 'plum',
+    externalUrl: 'https://draftsync.netlify.app/', externalLabel: 'Open Draftsync', sort: 10,
   },
   {
     slug: 'tenet', title: 'Tenet', eyebrow: 'A journal that changes with the moment', category: 'Web & PWA', platform: 'Web app', status: 'Live',
@@ -134,11 +134,11 @@ const baseProjects: Project[] = [
     externalUrl: 'https://linktr.ee/theaibay', externalLabel: 'Find the current app', sort: 15,
   },
   {
-    slug: 'sylph', title: 'Sylph', eyebrow: 'Weather with a little atmosphere', category: 'Web & PWA', platform: 'Web app · Android beta', status: 'Live',
-    summary: 'A weather and air-quality app ready on the web, with its Android version in beta.',
+    slug: 'sylph', title: 'Sylph', eyebrow: 'Weather with a little atmosphere', category: 'Android', platform: 'Android · Flutter', status: 'Public project',
+    summary: 'A weather and air-quality app with animated conditions and practical “leaving now” outfit suggestions.',
     story: 'The public repository describes weather and air-quality data, animated backgrounds, unit switching, and locally stored search history. Check live API credentials and service availability before promising current forecasts.',
     features: ['Weather and air quality', 'Atmosphere that responds to conditions', 'Outfit recommendations'], palette: 'blue',
-    repoUrl: 'https://github.com/vijayarkananduri/Sylph', externalUrl: 'https://thesylph.netlify.app/', externalLabel: 'Open Sylph', sort: 16,
+    repoUrl: 'https://github.com/vijayarkananduri/Sylph', externalUrl: 'https://github.com/vijayarkananduri/Sylph', externalLabel: 'Explore Sylph', sort: 16,
   },
 ];
 
