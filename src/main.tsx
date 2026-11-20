@@ -5,7 +5,7 @@ import './styles/site.css';
 import './styles/forge.css';
 import './styles/scrap.css';
 import './styles/theme.css';
-import '@fontsource-variable/caveat';
+import '@fontsource/reenie-beanie/400.css';
 import '@fontsource-variable/syne';
 import '@fontsource-variable/manrope';
 import '@fontsource/dm-mono/400.css';

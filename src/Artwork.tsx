@@ -13,34 +13,46 @@ export function ForgeMark() {
 export function HeroArtwork() {
   return <svg className="hero-sketch" viewBox="0 0 720 560" aria-hidden="true" focusable="false">
     <defs>
-      <linearGradient id="workbench-paper" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#f2e8d5" /><stop offset=".58" stopColor="#e6d8c0" /><stop offset="1" stopColor="#d8c7aa" /></linearGradient>
-      <linearGradient id="workbench-edge" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#fffaf0" stopOpacity=".72" /><stop offset="1" stopColor="#b6a184" stopOpacity=".12" /></linearGradient>
-      <filter id="workbench-shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="22" stdDeviation="19" floodColor="#080807" floodOpacity=".42" /></filter>
+      <linearGradient id="workbench-paper" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#f4ead6" /><stop offset="1" stopColor="#d9c8aa" /></linearGradient>
+      <filter id="workbench-shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="20" stdDeviation="18" floodColor="#080807" floodOpacity=".52" /></filter>
+      <pattern id="workbench-lines" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M0 13.5H14" stroke="#6f6252" strokeOpacity=".13" strokeWidth=".7" /></pattern>
     </defs>
-    <ellipse cx="367" cy="315" rx="246" ry="171" fill="#a65332" opacity=".09" />
     <g className="workbench-sheet" filter="url(#workbench-shadow)">
-      <path d="m134 105 353-31 82 54 23 292-340 39-100-68z" fill="url(#workbench-paper)" stroke="#f7efdf" strokeWidth="1.5" transform="rotate(-5 355 275)" />
-      <path d="m134 105 353-31 82 54 23 292-340 39-100-68z" fill="none" stroke="url(#workbench-edge)" strokeWidth="8" transform="rotate(-5 355 275)" />
-      <path d="m487 74 5 54 77-14" fill="#d3c2a7" stroke="#98856b" strokeOpacity=".44" strokeWidth="1.2" transform="rotate(-5 355 275)" />
-      <path d="m487 74 5 54 77-14" fill="none" stroke="#fff8e9" strokeOpacity=".82" strokeWidth="1.5" transform="rotate(-5 355 275)" />
+      <path d="m131 99 354-27 83 52 25 304-349 42-96-63z" fill="#8d4c31" opacity=".7" transform="translate(18 18) rotate(-5 355 275)" />
+      <path d="m126 85 354-27 83 52 25 304-349 42-96-63z" fill="url(#workbench-paper)" stroke="#f6eddb" strokeWidth="2" transform="rotate(-5 355 275)" />
+      <path d="m126 85 354-27 83 52 25 304-349 42-96-63z" fill="url(#workbench-lines)" opacity=".72" transform="rotate(-5 355 275)" />
+      <path d="m477 58 6 69 80-17" fill="#bca98c" stroke="#6b5747" strokeOpacity=".55" strokeWidth="1.5" transform="rotate(-5 355 275)" />
+      <path d="m477 58 6 69 80-17" fill="none" stroke="#f9f2e3" strokeWidth="2" transform="rotate(-5 355 275)" />
     </g>
     <g className="workbench-ink" transform="rotate(-5 355 275)">
-      <text x="174" y="148" fill="#806d57" className="art-label">A SMALL STUDIO / 01</text>
-      <path d="M174 166h114" stroke="#a65332" strokeWidth="2" strokeLinecap="round" />
-      <text x="174" y="214" fill="#302a24" className="art-title">An idea,</text>
-      <text x="174" y="256" fill="#302a24" className="art-title">given a form.</text>
-      <path d="M176 293c34-9 50 10 76 2s43-25 71-9 43 17 65 0 38-12 56 2" fill="none" stroke="#a65332" strokeWidth="2.5" strokeLinecap="round" className="ink-drawn-path" />
-      <path d="M177 325h116m-116 17h87m-87 17h65" fill="none" stroke="#756650" strokeOpacity=".43" strokeWidth="1.3" strokeLinecap="round" />
-      <circle cx="179" cy="295" r="3.5" fill="#a65332" /><circle cx="444" cy="288" r="3.5" fill="#a65332" />
-      <text x="176" y="399" fill="#806d57" className="art-label">RESEARCH</text>
-      <text x="303" y="399" fill="#806d57" className="art-label">BUILD</text>
-      <text x="407" y="399" fill="#806d57" className="art-label">WRITE</text>
-      <path d="M174 414h73m47 0h48m29 0h54" stroke="#806d57" strokeOpacity=".35" strokeWidth="1" />
+      <text x="174" y="145" fill="#705944" className="art-label">FIELD NOTES / 01</text>
+      <path d="M174 165h152" stroke="#a65332" strokeWidth="3" strokeLinecap="round" />
+      <text x="174" y="205" fill="#29231d" className="art-title">An idea,</text>
+      <text x="174" y="245" fill="#29231d" className="art-title">given a form.</text>
+      <path d="M176 283c34-9 50 10 76 2s43-25 71-9 43 17 65 0 38-12 56 2" fill="none" stroke="#a65332" strokeWidth="3" strokeLinecap="round" className="ink-drawn-path" />
+      <path d="M177 313c39-8 67 4 93 0m-93 18c34-7 51 4 80 0m-80 18c24-4 41 1 58-2" fill="none" stroke="#635746" strokeOpacity=".58" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="179" cy="285" r="5" fill="#a65332" /><circle cx="444" cy="278" r="5" fill="#a65332" />
+      <text x="176" y="392" fill="#705944" className="art-label">RESEARCH</text>
+      <text x="303" y="392" fill="#705944" className="art-label">BUILD</text>
+      <text x="407" y="392" fill="#705944" className="art-label">WRITE</text>
+      <path d="M174 407h73m47 0h48m29 0h54" stroke="#705944" strokeOpacity=".46" strokeWidth="1" />
+      <g className="workbench-correction">
+        <text x="432" y="342" fill="#705944" className="correction-before">reseach</text>
+        <path className="correction-strike" d="M429 337c22 4 45-4 72-1" fill="none" stroke="#a65332" strokeWidth="2.5" strokeLinecap="round" />
+        <text x="430" y="364" fill="#a65332" className="correction-after">research</text>
+      </g>
     </g>
-    <ellipse cx="453" cy="197" rx="112" ry="51" fill="none" stroke="#bd906b" strokeOpacity=".8" strokeWidth="1.2" transform="rotate(-28 453 197)" />
-    <ellipse cx="453" cy="197" rx="88" ry="39" fill="none" stroke="#bd906b" strokeOpacity=".38" strokeWidth="1" transform="rotate(31 453 197)" />
-    <circle cx="547" cy="144" r="4" fill="#c47a4d" />
-    <text x="94" y="508" fill="#c8b9a2" className="art-caption">RESEARCH / BUILD / WRITE</text>
+    <g className="workbench-pencil" transform="rotate(36 576 274)">
+      <rect x="559" y="192" width="23" height="204" rx="10" fill="#c27a4d" stroke="#f2c08c" strokeWidth="2" />
+      <path d="M559 212h23M559 373h23" stroke="#f0d6ae" strokeWidth="4" />
+      <path d="m559 396 11 30 12-30" fill="#d9c8aa" stroke="#f0d6ae" strokeWidth="2" />
+      <path d="m568 426 2 9 3-9" fill="#171514" />
+    </g>
+    <g className="workbench-tape" transform="rotate(-12 190 92)">
+      <path d="M145 75h104v27H145z" fill="#c57847" opacity=".76" />
+      <path d="M150 80h96" stroke="#f0c69e" strokeOpacity=".65" strokeWidth="1" strokeDasharray="3 5" />
+    </g>
+    <text x="94" y="508" fill="#d4c5ad" className="art-caption">A SMALL STUDIO FOR BIG QUESTIONS</text>
   </svg>;
 }
 

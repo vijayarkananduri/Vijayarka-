@@ -3,7 +3,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const root = process.cwd();
-const origin = (process.env.SITE_ORIGIN || 'https://vijayarka.netlify.app').replace(/\/$/, '');
+const origin = (process.env.SITE_ORIGIN || 'https://vijayarkananduri.github.io/Vijayarka-').replace(/\/$/, '');
 const routeList = JSON.parse(await readFile(path.join(root, 'site-routes.json'), 'utf8')).routes;
 const template = await readFile(path.join(root, 'dist/index.html'), 'utf8');
 const serverEntry = pathToFileURL(path.join(root, 'dist/ssr/entry-server.js')).href;
@@ -24,16 +24,18 @@ function buildHtml(route, rendered, isNotFound = false) {
   let html = template.replace('<div id="root"></div>', `<div id="root">${rendered.html}</div>`);
   html = html.replace(/<title>[^<]*<\/title>/i, `<title>${escapeHtml(meta.title)}</title>`);
   html = replaceMeta(html, 'name="description"', `<meta name="description" content="${escapeHtml(meta.description)}" />`);
-  html = replaceMeta(html, 'name="keywords"', `<meta name="keywords" content="${escapeHtml(`${meta.section}, Vijayarka Nanduri, HCI, adaptive interfaces, human-centered AI`)}" />`);
+  html = replaceMeta(html, 'name="keywords"', `<meta name="keywords" content="${escapeHtml((meta.keywords || [meta.section, 'Vijayarka Nanduri', 'human-computer interaction', 'adaptive interfaces', 'creative work']).join(', '))}" />`);
   html = replaceMeta(html, 'property="og:type"', '<meta property="og:type" content="website" />');
   html = replaceMeta(html, 'property="og:site_name"', '<meta property="og:site_name" content="Vijayarka Nanduri" />');
   html = replaceMeta(html, 'property="og:title"', `<meta property="og:title" content="${escapeHtml(meta.title)}" />`);
   html = replaceMeta(html, 'property="og:description"', `<meta property="og:description" content="${escapeHtml(meta.description)}" />`);
   html = replaceMeta(html, 'property="og:image"', `<meta property="og:image" content="${escapeHtml(image)}" />`);
+  html = replaceMeta(html, 'property="og:image:alt"', `<meta property="og:image:alt" content="${escapeHtml(`Portfolio preview for ${meta.section} by Vijayarka Nanduri`)}" />`);
   html = replaceMeta(html, 'name="twitter:card"', '<meta name="twitter:card" content="summary_large_image" />');
   html = replaceMeta(html, 'name="twitter:title"', `<meta name="twitter:title" content="${escapeHtml(meta.title)}" />`);
   html = replaceMeta(html, 'name="twitter:description"', `<meta name="twitter:description" content="${escapeHtml(meta.description)}" />`);
   html = replaceMeta(html, 'name="twitter:image"', `<meta name="twitter:image" content="${escapeHtml(image)}" />`);
+  html = replaceMeta(html, 'name="twitter:image:alt"', `<meta name="twitter:image:alt" content="${escapeHtml(`Portfolio preview for ${meta.section} by Vijayarka Nanduri`)}" />`);
   if (isNotFound) {
     html = html.replace('</head>', '    <meta name="robots" content="noindex, nofollow" />\n  </head>');
   } else {

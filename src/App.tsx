@@ -198,6 +198,13 @@ function PageIntro({ index, title, subtitle, accent }: { index: string; title: R
   </header>;
 }
 
+function RoomCTA({ eyebrow, title, copy, label }: { eyebrow: string; title: React.ReactNode; copy: string; label: string }) {
+  return <section className="room-cta" data-reveal>
+    <div><p className="eyebrow mono">{eyebrow}</p><h2>{title}</h2><p className="room-cta-copy">{copy}</p></div>
+    <a className="button button-primary" href={withBasePath('/contact/')}>{label}<span>↗</span></a>
+  </section>;
+}
+
 function VisualTile({ project, large = false }: { project: Project; large?: boolean }) {
   return <div className={`visual-tile visual-${project.palette} ${large ? 'visual-large' : ''}`} aria-hidden="true">
     <ProjectArtwork project={project} large={large} />
@@ -257,8 +264,8 @@ function Home({ onPlay }: { onPlay: () => void }) {
       <div className="hero-content" data-reveal>
         <p className="eyebrow mono"><span className="live-pulse" /> RESEARCH / BUILD / WRITE</p>
         <h1><span className="hero-signature">Vijayarka</span><span className="hero-surname">NANDURI<i>.</i></span></h1>
-        <p className="hero-tagline">I don’t make things.<br /><em>I make you feel things.</em></p>
-        <p className="hero-description">I’m a researcher, builder, and writer exploring interfaces that grow with us, tools that respect us, and ideas that find their own form.</p>
+        <p className="hero-tagline">I follow questions<br /><em>until they take shape.</em></p>
+        <p className="hero-description">I’m Vijayarka: a researcher, builder, and writer making adaptive interfaces, privacy-minded tools, and stories that stay with you.</p>
         <div className="hero-actions"><a className="button button-primary" href={withBasePath("/projects/")}>See the work <span>↗</span></a><button className="button button-outline" onClick={onPlay}><svg className="play-icon" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 2.2 10 6l-7 3.8z" /></svg> Play the intro <small>~24 sec</small></button></div>
         <div className="hero-caption"><span>01 — THE FOYER</span><span>SCROLL TO WANDER <b>↓</b></span></div>
       </div>
@@ -271,7 +278,7 @@ function Home({ onPlay }: { onPlay: () => void }) {
     </section>
 
     <section className="home-work section-pad" id="selected-work" data-reveal>
-      <div className="section-heading"><Doodle kind="arrow" /><div><p className="eyebrow mono">02 / THE WORKSHOP</p><h2>Things I<br /><em>couldn’t leave alone.</em></h2></div><p className="section-intro-copy">A few things built around a question, an itch, or a feeling that wouldn’t sit still.</p></div>
+      <div className="section-heading"><Doodle kind="arrow" /><div><p className="eyebrow mono">02 / THE WORKSHOP</p><h2>Things I<br /><em>couldn’t leave alone.</em></h2></div><p className="section-intro-copy">A small selection from 21 projects about habit, privacy, learning, and play.</p></div>
       <div className="project-grid home-project-grid">{featured.map((project, i) => <ProjectCard key={project.slug} project={project} featured={i === 0} />)}</div>
       <div className="section-end"><span className="mono">21 PROJECTS · STILL MAKING MORE</span><a className="text-link" href={withBasePath("/projects/")}>Enter the project room <b>↗</b></a></div>
     </section>
@@ -302,11 +309,12 @@ function ProjectsPage() {
     return matchesFilter && (!normalizedQuery || searchText.includes(normalizedQuery));
   });
   return <PageShell className="projects" >
-    <div className="page-wrap">
-      <PageIntro index="01" accent="green" title={<>Made to be<br /><em>lived in.</em></>} subtitle="Apps, tools, experiments, and the occasional strange little idea. Pick a room and have a look around." />
+      <div className="page-wrap">
+      <PageIntro index="01" accent="green" title={<>Made to be<br /><em>lived in.</em></>} subtitle="Twenty-one apps, tools, games, and experiments. Browse by platform, search for a name, or open a project to see what it’s trying to do." />
       <div className="catalogue-toolbar"><div className="catalogue-tools"><div className="filters" role="group" aria-label="Filter projects by platform or type">{filters.map((item) => <button key={item} className={`filter-chip ${filter === item ? 'is-active' : ''}`} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}<span>{item === 'All' ? projects.length : projects.filter((p) => p.category === item).length}</span></button>)}</div><label className="project-search"><span className="mono">FIND A PROJECT</span><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search the collection" /></label></div><p className="catalogue-count mono" aria-live="polite">SHOWING {String(visible.length).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</p></div>
       {visible.length ? <div className="project-grid catalogue-grid">{visible.map((project, index) => <ProjectCard key={project.slug} project={project} featured={filter === 'All' && !normalizedQuery && index === 0} />)}</div> : <div className="no-project-results" role="status"><p>No projects match that search.</p><button className="text-link" onClick={() => { setQuery(''); setFilter('All'); }}>Clear search and filters ↗</button></div>}
-      <div className="catalogue-note"><span className="note-index mono">NOTE</span><p>Some are polished, some are still finding their shape. Each one started with a question worth following.</p></div>
+      <div className="catalogue-note"><span className="note-index mono">NOTE</span><p>Some are polished; some are still finding their shape. Each started with a question worth following.</p></div>
+      <RoomCTA eyebrow="THE NEXT QUESTION" title={<>Have an idea<br /><em>worth making?</em></>} copy="Tell me what you’re working through. A clear problem is a good place to begin." label="Talk about a project" />
     </div>
   </PageShell>;
 }
@@ -329,8 +337,10 @@ function ProjectDetail({ project }: { project: Project }) {
         <VisualTile project={project} large />
       </section>
       {project.problem && project.build && project.flex && <section className="case-notes" aria-label="Case study">{([['01', 'The itch', project.problem], ['02', 'The build', project.build], ['03', 'The flex', project.flex]] as const).map(([n, t, text], i) => <article key={n} data-reveal className={`case-note note-${i + 1}`}><span className="case-no mono">{n}</span><h2>{t}</h2><p>{text}</p></article>)}</section>}
-      <div className="detail-columns" data-reveal><section className="detail-story">{project.eyebrow && <><p className="eyebrow mono">IN ONE LINE</p><p className="pull-quote">{project.eyebrow}</p></>}{!project.problem && project.story && <p className="story-text">{project.story}</p>}{project.privacyNote && <aside className="detail-note"><span className="mono">A NOTE ON THE DETAILS</span><p>{project.privacyNote}</p></aside>}</section>
-        {project.features.length > 0 && <section className="detail-features"><p className="eyebrow mono">A FEW PIECES</p><h2>Inside the <em>room.</em></h2><ul>{project.features.map((feature, i) => <li key={feature}><span className="feature-number mono">0{i + 1}</span>{feature}<span>↗</span></li>)}</ul><p className="detail-disclaimer">Details and links can change. The live project or repository is the best place to check the latest.</p></section>}</div>
+      {(project.eyebrow || project.privacyNote || project.features.length > 0 || (!project.problem && project.story && project.story !== project.summary)) && <div className="detail-columns" data-reveal>
+        <section className="detail-story">{project.eyebrow && <><p className="eyebrow mono">IN ONE LINE</p><p className="pull-quote">{project.eyebrow}</p></>}{!project.problem && project.story && project.story !== project.summary && <p className="story-text">{project.story}</p>}{project.privacyNote && <aside className="detail-note"><span className="mono">A NOTE ON THE DETAILS</span><p>{project.privacyNote}</p></aside>}</section>
+        {project.features.length > 0 && <section className="detail-features"><p className="eyebrow mono">A FEW PIECES</p><h2>Inside the <em>room.</em></h2><ul>{project.features.map((feature, i) => <li key={feature}><span className="feature-number mono">0{i + 1}</span>{feature}<span>↗</span></li>)}</ul><p className="detail-disclaimer">Details and links can change. The live project or repository is the best place to check the latest.</p></section>}
+      </div>}
       <section className="cta-band" data-reveal><div><p className="eyebrow mono">YOUR TURN</p><h2>See how it <em>holds up.</em></h2></div><div className="cta-actions">{actions}</div></section>
       <nav className="page-turn" aria-label="More projects"><a href={withBasePath(`/projects/${prev.slug}/`)}><span className="mono">← PREVIOUS PAGE</span><strong>{prev.title}</strong></a><a href={withBasePath(`/projects/${next.slug}/`)}><span className="mono">NEXT PAGE →</span><strong>{next.title}</strong></a></nav>
       <section className="related-projects"><div className="section-heading"><div><p className="eyebrow mono">KEEP WANDERING</p><h2>Another <em>room?</em></h2></div><a className="text-link" href={withBasePath("/projects/")}>All projects ↗</a></div><div className="project-grid">{related.map((item) => <ProjectCard key={item.slug} project={item} />)}</div></section>
@@ -340,10 +350,11 @@ function ProjectDetail({ project }: { project: Project }) {
 
 function ResearchPage() {
   return <PageShell className="research">
-    <div className="page-wrap"><PageIntro index="02" accent="blue" title={<>Questions worth<br /><em>staying with.</em></>} subtitle="Research in progress, ideas in public, and the honest limits of what a study can tell us." />
+    <div className="page-wrap"><PageIntro index="02" accent="blue" title={<>Questions worth<br /><em>staying with.</em></>} subtitle="Three public preprints on adaptive interfaces, machine-learning explanations, and writing tools that leave the author in charge." />
       <div className="research-page-intro"><span className="research-seal">R<span>·</span></span><p>These Zenodo records are preprints. Read the original record for the full paper; summaries here are a guide, not a substitute.</p></div>
       <div className="research-list">{research.map((paper, i) => <article data-reveal className="research-item" key={paper.slug}><div className="research-item-index mono">0{i + 1}<span>—</span>{paper.date}</div><div className="research-item-content"><div className="research-tags"><span>{paper.kind}</span><span>DOI {paper.doi}</span></div><h2><a href={withBasePath(`/research/${paper.slug}/`)}>{paper.title}<span>↗</span></a></h2><p>{paper.summary}</p><div className="research-limit"><span>THE LIMITS</span><p>{paper.limitation}</p></div><a className="text-link" href={paper.url} target="_blank" rel="noreferrer">Open the Zenodo record <b>↗</b></a></div></article>)}</div>
       <div className="research-footnote"><p className="mono">A NOTE ON THE WORD “PUBLISHED”</p><p>These works are publicly archived preprints. This site does not present them as peer-reviewed journal papers.</p></div>
+      <RoomCTA eyebrow="COMPARE NOTES" title={<>Working on a<br /><em>similar question?</em></>} copy="If you’re exploring adaptive interfaces, human-computer interaction, or more thoughtful AI tools, I’d be glad to hear what you’re finding." label="Start a conversation" />
     </div>
   </PageShell>;
 }
@@ -352,16 +363,17 @@ function ResearchDetail({ slug }: { slug: string }) {
   const paper = research.find((item) => item.slug === slug);
   if (!paper) return <NotFound />;
   return <PageShell className="research">
-    <div className="page-wrap"><a className="back-link mono" href={withBasePath("/research/")}>← ALL RESEARCH</a><article className="research-detail"><p className="eyebrow mono">PREPRINT <span>/</span> {paper.date}</p><h1>{paper.title}</h1><p className="research-detail-lede">{paper.summary}</p><a className="button button-research" href={paper.url} target="_blank" rel="noreferrer">Read the Zenodo record <span>↗</span></a><section className="detail-note research-limit-large"><p className="mono">LIMITATIONS & CONTEXT</p><p>{paper.limitation}</p></section><div className="doi-box"><span className="mono">DOI</span><code>{paper.doi}</code><a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noreferrer">Resolve DOI ↗</a></div></article></div>
+    <div className="page-wrap"><a className="back-link mono" href={withBasePath("/research/")}>← ALL RESEARCH</a><article className="research-detail"><p className="eyebrow mono">PREPRINT <span>/</span> {paper.date}</p><h1>{paper.title}</h1><p className="research-detail-lede">{paper.summary}</p><a className="button button-research" href={paper.url} target="_blank" rel="noreferrer">Read the Zenodo record <span>↗</span></a><section className="detail-note research-limit-large"><p className="mono">LIMITATIONS & CONTEXT</p><p>{paper.limitation}</p></section><div className="doi-box"><span className="mono">DOI</span><code>{paper.doi}</code><a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noreferrer">Resolve DOI ↗</a></div></article><RoomCTA eyebrow="COMPARE NOTES" title={<>Research is better<br /><em>in conversation.</em></>} copy="If this question intersects with your work, I’d be glad to hear what you’re finding." label="Get in touch" /></div>
   </PageShell>;
 }
 
 function CreativePage() {
   return <PageShell className="creative-page">
-    <div className="page-wrap"><PageIntro index="03" accent="amber" title={<>Some things only<br />make sense as <em>stories.</em></>} subtitle="Books, games, audio, and creative experiments—little exits from the strictly useful." />
+    <div className="page-wrap"><PageIntro index="03" accent="amber" title={<>Some things only<br />make sense as <em>stories.</em></>} subtitle="Prose poetry, a writing guide, a browser game, and audio fiction—work that needed a form beyond the usual interface." />
       <section className="creative-intro-band" data-reveal><div className="creative-cut-paper" aria-hidden="true"><div /><b>between<br />science<br />& feeling</b></div><p>Words, play, and other ways of thinking out loud. Pick up something that catches your eye.</p></section>
       <div className="creative-grid">{creative.map((item, index) => <article data-reveal className={`creative-card creative-${item.tone}`} key={item.title}><div className="creative-card-art"><CreativeArtwork title={item.title} index={index} /></div><div className="creative-card-copy"><p className="eyebrow mono">{item.kind}</p><h2>{item.title}</h2><p>{item.summary}</p><a className="text-link" href={item.url} target="_blank" rel="noreferrer">{item.action} <b>↗</b></a></div></article>)}</div>
       <section className="creative-extra"><div><p className="eyebrow mono">MOVING PICTURES</p><h2>Ideas, but <em>in motion.</em></h2><p>Videos on creative tools, AI, and Alive UI.</p></div><div className="video-list"><a href="https://youtu.be/-kCgiYXG_AA" target="_blank" rel="noreferrer"><span>01 / ALIVE UI</span>Let’s build your own habit tracker <b>↗</b></a><a href="https://youtu.be/LvKgftOAp9w" target="_blank" rel="noreferrer"><span>02 / MAKING</span>I am done with dead apps <b>↗</b></a><a href="https://www.youtube.com/@VijayarkaNanduri" target="_blank" rel="noreferrer"><span>03 / CHANNEL</span>More from Vijayarka <b>↗</b></a></div></section>
+      <RoomCTA eyebrow="THE STORY STUDIO IS OPEN" title={<>A story, sound,<br /><em>or odd little idea?</em></>} copy="If it needs a collaborator, a sounding board, or simply a place to start, send it my way." label="Make an introduction" />
     </div>
   </PageShell>;
 }

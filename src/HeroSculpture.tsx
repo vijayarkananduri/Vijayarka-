@@ -78,6 +78,9 @@ export function HeroSculpture() {
             metalness: 0.015,
             clearcoat: 0.12,
             clearcoatRoughness: 0.72,
+            transparent: true,
+            opacity: 0.14,
+            depthWrite: false,
             side: THREE.DoubleSide,
           }),
         );

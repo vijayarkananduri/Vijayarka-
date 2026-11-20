@@ -86,7 +86,7 @@ export const caseStudies: Record<string, Study> = {
 
 export const extraProjects: Project[] = [
   { slug: 'kosha', title: 'KOSHA', eyebrow: '', category: 'Android', platform: '', status: 'Private beta', summary: '', story: '', features: ['AES-256-GCM with Android Keystore', 'Swipeable card-deck vault', 'Hidden duress PIN'], palette: 'dark', sort: 1, externalLabel: 'Ask about KOSHA' },
-  { slug: 'nslv-19', title: 'NSLV-19', eyebrow: '', category: 'Experiment', platform: 'Team project', status: 'Completed', summary: '', story: 'I am part of it.', features: [], palette: 'blue', sort: 4 },
+  { slug: 'nslv-19', title: 'NSLV-19', eyebrow: '', category: 'Experiment', platform: 'Team project', status: 'Completed', summary: '', story: 'A completed team experiment.', features: [], palette: 'blue', sort: 4 },
   { slug: 'flexrun', title: 'FlexRun', eyebrow: '', category: 'Experiment', platform: '', status: 'Live', summary: '', story: '', features: ['Body-motion controls', 'On-device pose estimation', 'Pixel arcade play'], palette: 'coral', sort: 7 },
   { slug: 'epochs', title: 'Epochs', eyebrow: '', category: 'Experiment', platform: '', status: 'Live', summary: '', story: '', features: ['Live ML experiments', 'Calibration and confidence', 'Interactive tables and code'], palette: 'amber', sort: 11 },
   { slug: 'klar', title: 'Klar', eyebrow: '', category: 'Web & PWA', platform: '', status: 'Live', summary: '', story: '', features: ['Conversational German practice', 'Context-aware replies', 'Built for real preparation'], palette: 'green', sort: 20 },
